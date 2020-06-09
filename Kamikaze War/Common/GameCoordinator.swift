@@ -20,11 +20,29 @@ class GameCoordinator: Coordinator {
     }
     
     override func start() {
-        let startNewGameViewController = StartNewGameViewController()
+        let startNewGameViewModel = StartNewGameViewModel()
+        let startNewGameViewController = StartNewGameViewController(viewModel: startNewGameViewModel)
+        
+//        startNewGameViewModel.viewDelegate = startNewGameViewController
+        startNewGameViewModel.coordinatorDelegate = self
         
         presenter.pushViewController(startNewGameViewController, animated: false)
     }
     
     override func finish() {
+    }
+    
+    private func goToGame() {
+        let gameViewController = GameViewController()
+        
+        presenter.pushViewController(gameViewController, animated: false)
+    }
+}
+
+// MARK: NewGameCoordinatorDelegate
+extension GameCoordinator: NewGameCoordinatorDelegate {
+    
+    func startGame() {
+        goToGame()
     }
 }
