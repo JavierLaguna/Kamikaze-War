@@ -10,7 +10,7 @@ import ARKit
 
 class ProBullet: SCNNode, Bullet {
    
-    var velocity: Float { return 12 }
-    var bulletNode: SCNSphere { return SCNSphere(radius: 0.03) }
-    var bulletColor: UIColor { return .blue }
+    var velocity: Float = 12
+    var bulletNode: SCNSphere = SCNSphere(radius: 0.03)
+    var bulletColor: UIColor = .blue
 }

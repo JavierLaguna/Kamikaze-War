@@ -10,7 +10,7 @@ import ARKit
 
 class BasicBullet: SCNNode, Bullet {
    
-    var velocity: Float { return 9 }
-    var bulletNode: SCNSphere { return SCNSphere(radius: 0.02) }
-    var bulletColor: UIColor { return .red }
+    var velocity: Float = 9
+    var bulletNode: SCNSphere = SCNSphere(radius: 0.02)
+    var bulletColor: UIColor = .red
 }

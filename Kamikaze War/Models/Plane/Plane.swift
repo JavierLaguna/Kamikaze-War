@@ -11,6 +11,7 @@ import ARKit
 class Plane: SCNNode {
     
     var id: Int = 0
+    var life: Int = 100
     
     init(withId id: Int) {
         super.init()
