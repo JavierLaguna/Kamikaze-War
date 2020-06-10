@@ -12,14 +12,22 @@ class Plane: SCNNode {
     
     var id: Int = 0
     
-     init(withId id: Int) {
+    init(withId id: Int) {
         super.init()
-
+        
         self.id = id
         
         let plane = SCNScene(named: "ship.scn") ?? SCNScene()
         let node = plane.rootNode
         self.addChildNode(node)
+        
+        let lifeBox = SCNBox(width: 1, height: 0.01, length: 0.01, chamferRadius: 0)
+        
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.green
+        material.isDoubleSided = true
+        lifeBox.materials = [material]
+        self.geometry = lifeBox
         
         // Añadimos físicas al avión
         let shape = SCNPhysicsShape(node: node, options: nil)

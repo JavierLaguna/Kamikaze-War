@@ -14,7 +14,7 @@
 		494A8951248FEF8400213221 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8950248FEF8400213221 /* Plane.swift */; };
 		494A8953248FEF9900213221 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 494A8952248FEF9900213221 /* texture.png */; };
 		494A8955248FEFBB00213221 /* ship.scn in Resources */ = {isa = PBXBuildFile; fileRef = 494A8954248FEFBB00213221 /* ship.scn */; };
-		494A8958248FEFD900213221 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8957248FEFD900213221 /* Bullet.swift */; };
+		494A8958248FEFD900213221 /* BasicBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8957248FEFD900213221 /* BasicBullet.swift */; };
 		494A895B248FF00200213221 /* Explossion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A895A248FF00200213221 /* Explossion.swift */; };
 		494A895E248FF01900213221 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 494A895C248FF01900213221 /* spark.png */; };
 		494A895F248FF01900213221 /* Explossion.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 494A895D248FF01900213221 /* Explossion.scnp */; };
@@ -24,6 +24,8 @@
 		494A896A2490021200213221 /* AmmoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A89692490021200213221 /* AmmoView.swift */; };
 		494A896C2490022000213221 /* AmmoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494A896B2490022000213221 /* AmmoView.xib */; };
 		494A8971249006B900213221 /* AmmoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8970249006B900213221 /* AmmoBox.swift */; };
+		49758F6D249143DD003149A7 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49758F6C249143DD003149A7 /* Bullet.swift */; };
+		49758F6F2491472C003149A7 /* ProBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49758F6E2491472C003149A7 /* ProBullet.swift */; };
 		499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5529248EA54800E9A315 /* AppDelegate.swift */; };
 		499E552C248EA54800E9A315 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E552B248EA54800E9A315 /* SceneDelegate.swift */; };
 		499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499E5532248EA54B00E9A315 /* Assets.xcassets */; };
@@ -40,7 +42,7 @@
 		494A8950248FEF8400213221 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		494A8952248FEF9900213221 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		494A8954248FEFBB00213221 /* ship.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = ship.scn; sourceTree = "<group>"; };
-		494A8957248FEFD900213221 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		494A8957248FEFD900213221 /* BasicBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBullet.swift; sourceTree = "<group>"; };
 		494A895A248FF00200213221 /* Explossion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explossion.swift; sourceTree = "<group>"; };
 		494A895C248FF01900213221 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		494A895D248FF01900213221 /* Explossion.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Explossion.scnp; sourceTree = "<group>"; };
@@ -50,6 +52,8 @@
 		494A89692490021200213221 /* AmmoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmmoView.swift; sourceTree = "<group>"; };
 		494A896B2490022000213221 /* AmmoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmmoView.xib; sourceTree = "<group>"; };
 		494A8970249006B900213221 /* AmmoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmmoBox.swift; sourceTree = "<group>"; };
+		49758F6C249143DD003149A7 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		49758F6E2491472C003149A7 /* ProBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBullet.swift; sourceTree = "<group>"; };
 		499E5526248EA54800E9A315 /* Kamikaze War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kamikaze War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		499E5529248EA54800E9A315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499E552B248EA54800E9A315 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +98,9 @@
 		494A8956248FEFC700213221 /* Bullet */ = {
 			isa = PBXGroup;
 			children = (
-				494A8957248FEFD900213221 /* Bullet.swift */,
+				49758F6C249143DD003149A7 /* Bullet.swift */,
+				494A8957248FEFD900213221 /* BasicBullet.swift */,
+				49758F6E2491472C003149A7 /* ProBullet.swift */,
 			);
 			path = Bullet;
 			sourceTree = "<group>";
@@ -317,6 +323,8 @@
 			files = (
 				4913C8F9248EAAF6003E11B8 /* GameCoordinator.swift in Sources */,
 				494A8971249006B900213221 /* AmmoBox.swift in Sources */,
+				49758F6D249143DD003149A7 /* Bullet.swift in Sources */,
+				49758F6F2491472C003149A7 /* ProBullet.swift in Sources */,
 				499E5545248EA7DF00E9A315 /* Coordinator.swift in Sources */,
 				499E5547248EA7F800E9A315 /* AppCoordinator.swift in Sources */,
 				494A896A2490021200213221 /* AmmoView.swift in Sources */,
@@ -328,7 +336,7 @@
 				494A8966248FF24800213221 /* StartNewGameViewModel.swift in Sources */,
 				494A894E248FEF5800213221 /* Collisions.swift in Sources */,
 				494A8963248FF0AB00213221 /* GameViewController.swift in Sources */,
-				494A8958248FEFD900213221 /* Bullet.swift in Sources */,
+				494A8958248FEFD900213221 /* BasicBullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

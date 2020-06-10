@@ -2,22 +2,27 @@
 //  Bullet.swift
 //  Kamikaze War
 //
-//  Created by Javier Laguna on 09/06/2020.
+//  Created by Javier Laguna on 10/06/2020.
 //  Copyright © 2020 Javier Laguna. All rights reserved.
 //
 
 import ARKit
 
-class Bullet: SCNNode {
+protocol Bullet: SCNNode {
+    var velocity: Float { get }
+    var bulletNode: SCNSphere { get }
+    var bulletColor: UIColor { get }
     
-    fileprivate let velocity: Float = 9
+    func fireFrom(_ camera: ARCamera)
+}
+
+extension Bullet {
     
-    init(_ camera: ARCamera) {
-        super.init()
+    func fireFrom(_ camera: ARCamera) {
         
-        let bullet = SCNSphere(radius: 0.02)
+        let bullet = bulletNode
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.red
+        material.diffuse.contents = bulletColor
         bullet.materials = [material]
         self.geometry = bullet
         
@@ -44,7 +49,4 @@ class Bullet: SCNNode {
         self.position = pos
         
     }
-    
-    required init?(coder aDecoder: NSCoder) {fatalError()}
-    
 }

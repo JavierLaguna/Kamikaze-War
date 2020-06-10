@@ -12,6 +12,7 @@ class GameViewController: UIViewController {
     
     @IBOutlet private weak var sceneView: ARSCNView!
     @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var bulletsStack: UIStackView!
     
     var planes: [Plane] = []
     let startPlanes = 5
@@ -85,7 +86,8 @@ class GameViewController: UIViewController {
             return
         }
         
-        let bullet = Bullet(camera)
+        let bullet = ProBullet()
+        bullet.fireFrom(camera)
         sceneView.scene.rootNode.addChildNode(bullet)
     }
     

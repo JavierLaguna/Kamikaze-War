@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="Kamikaze_War" customModuleProvider="target">
             <connections>
+                <outlet property="bulletsStack" destination="A9X-4n-iLg" id="LSu-OC-X2p"/>
                 <outlet property="sceneView" destination="Art-wH-nRt" id="1Cn-nB-IEz"/>
                 <outlet property="scoreLabel" destination="VaE-uN-vlY" id="dhF-2F-9Qm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Art-wH-nRt">
-                    <rect key="frame" x="44" y="0.0" width="724" height="375"/>
+                    <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                 </arscnView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_aim" translatesAutoresizingMaskIntoConstraints="NO" id="rDJ-dP-2VP">
                     <rect key="frame" x="384" y="165.66666666666666" width="44" height="44"/>
@@ -30,10 +31,10 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cux-F0-hxa">
-                    <rect key="frame" x="44" y="0.0" width="70" height="42"/>
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="42"/>
                     <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="sSI-GA-3G1"/>
+                        <constraint firstAttribute="width" constant="90" id="sSI-GA-3G1"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
                     <state key="normal" title="Exit">
@@ -44,7 +45,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ik9-Rp-tWi">
-                    <rect key="frame" x="614" y="0.0" width="154" height="45"/>
+                    <rect key="frame" x="648" y="0.0" width="164" height="45"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ENG-66-kMG">
                             <rect key="frame" x="30" y="10" width="94" height="25"/>
@@ -67,27 +68,36 @@
                     <color key="backgroundColor" white="0.0" alpha="0.2518461044520548" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="ENG-66-kMG" firstAttribute="top" secondItem="Ik9-Rp-tWi" secondAttribute="top" constant="10" id="MxJ-2I-gIq"/>
-                        <constraint firstAttribute="trailing" secondItem="ENG-66-kMG" secondAttribute="trailing" constant="30" id="NTo-JY-2Ub"/>
                         <constraint firstItem="ENG-66-kMG" firstAttribute="leading" secondItem="Ik9-Rp-tWi" secondAttribute="leading" constant="30" id="aAD-QU-aGN"/>
+                        <constraint firstAttribute="trailing" secondItem="ENG-66-kMG" secondAttribute="trailing" constant="40" id="pwG-hk-2fL"/>
                         <constraint firstAttribute="bottom" secondItem="ENG-66-kMG" secondAttribute="bottom" constant="10" id="rg2-Lu-vkq"/>
                     </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="274" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A9X-4n-iLg">
+                    <rect key="frame" x="89" y="40" width="50" height="274"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="HfY-YS-eys"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="cux-F0-hxa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DDo-cd-7GY"/>
+                <constraint firstItem="A9X-4n-iLg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="8T8-nl-5g8"/>
+                <constraint firstAttribute="trailing" secondItem="Ik9-Rp-tWi" secondAttribute="trailing" id="E4I-gh-Pwm"/>
                 <constraint firstItem="rDJ-dP-2VP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Fym-u5-Gxq"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ik9-Rp-tWi" secondAttribute="trailing" id="J1K-MO-dXx"/>
+                <constraint firstAttribute="trailing" secondItem="Art-wH-nRt" secondAttribute="trailing" id="Iok-BD-VNK"/>
                 <constraint firstAttribute="bottom" secondItem="Art-wH-nRt" secondAttribute="bottom" id="KDt-gT-IdQ"/>
-                <constraint firstItem="Art-wH-nRt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LKp-Dq-Ker"/>
                 <constraint firstItem="Art-wH-nRt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ndo-Ek-87F"/>
                 <constraint firstItem="Ik9-Rp-tWi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RmV-Mj-oeF"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Art-wH-nRt" secondAttribute="trailing" id="YsM-KQ-Hv1"/>
+                <constraint firstItem="A9X-4n-iLg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="45" id="YDM-uq-4Mh"/>
+                <constraint firstItem="Art-wH-nRt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fyC-vA-ZHe"/>
                 <constraint firstItem="cux-F0-hxa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hkX-sd-dSh"/>
+                <constraint firstItem="cux-F0-hxa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jTD-4f-XAz"/>
                 <constraint firstItem="rDJ-dP-2VP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="kiZ-Zd-s3V"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="A9X-4n-iLg" secondAttribute="bottom" constant="40" id="s08-1f-9cP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="131.8840579710145" y="152.67857142857142"/>
+            <point key="canvasLocation" x="131.52709359605913" y="151.19999999999999"/>
         </view>
     </objects>
     <resources>
