@@ -10,7 +10,8 @@ import ARKit
 
 class GameViewController: UIViewController {
     
-    @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet private weak var sceneView: ARSCNView!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     var planes: [Plane] = []
     let startPlanes = 5
@@ -34,6 +35,7 @@ class GameViewController: UIViewController {
         for index in 0..<startPlanes {
             addNewPlane(withId: index)
         }
+        addAmmoBox()
     }
     
     fileprivate func setupComponents() {
@@ -64,6 +66,20 @@ class GameViewController: UIViewController {
         }
     }
     
+    private func addAmmoBox() {
+        let ammoBox = AmmoBox(withId: 0)
+        let x = CGFloat.random(in: -1.5...1.5) // Un metro y medio a la izq o a la derecha
+        let y = CGFloat.random(in: -2...2) // Dos metro arriba o abajo
+        let z = CGFloat.random(in: -2 ... -1) // Profundidad
+        
+        ammoBox.position = SCNVector3(x, y, z)
+//        self.planes.append(plane)
+        
+        self.sceneView.prepare([ammoBox]) { _ in
+            self.sceneView.scene.rootNode.addChildNode(ammoBox)
+        }
+    }
+    
     @objc private func tapScreen() {
         guard let camera = self.sceneView.session.currentFrame?.camera else {
             return
@@ -73,6 +89,9 @@ class GameViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(bullet)
     }
     
+    @IBAction private func tapExitButton(_ sender: Any) {
+        // TODO:
+    }
 }
 
 //MARK: - Contact delegate

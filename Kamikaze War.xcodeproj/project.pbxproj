@@ -21,6 +21,9 @@
 		494A8963248FF0AB00213221 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8961248FF0AB00213221 /* GameViewController.swift */; };
 		494A8964248FF0AB00213221 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494A8962248FF0AB00213221 /* GameViewController.xib */; };
 		494A8966248FF24800213221 /* StartNewGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8965248FF24800213221 /* StartNewGameViewModel.swift */; };
+		494A896A2490021200213221 /* AmmoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A89692490021200213221 /* AmmoView.swift */; };
+		494A896C2490022000213221 /* AmmoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494A896B2490022000213221 /* AmmoView.xib */; };
+		494A8971249006B900213221 /* AmmoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494A8970249006B900213221 /* AmmoBox.swift */; };
 		499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5529248EA54800E9A315 /* AppDelegate.swift */; };
 		499E552C248EA54800E9A315 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E552B248EA54800E9A315 /* SceneDelegate.swift */; };
 		499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499E5532248EA54B00E9A315 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 		494A8961248FF0AB00213221 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		494A8962248FF0AB00213221 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		494A8965248FF24800213221 /* StartNewGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartNewGameViewModel.swift; sourceTree = "<group>"; };
+		494A89692490021200213221 /* AmmoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmmoView.swift; sourceTree = "<group>"; };
+		494A896B2490022000213221 /* AmmoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmmoView.xib; sourceTree = "<group>"; };
+		494A8970249006B900213221 /* AmmoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmmoBox.swift; sourceTree = "<group>"; };
 		499E5526248EA54800E9A315 /* Kamikaze War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kamikaze War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		499E5529248EA54800E9A315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499E552B248EA54800E9A315 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,31 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		494A8967249001EC00213221 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				494A8968249001F100213221 /* View */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		494A8968249001F100213221 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				494A89692490021200213221 /* AmmoView.swift */,
+				494A896B2490022000213221 /* AmmoView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		494A896D2490069C00213221 /* AmmoBox */ = {
+			isa = PBXGroup;
+			children = (
+				494A8970249006B900213221 /* AmmoBox.swift */,
+			);
+			path = AmmoBox;
+			sourceTree = "<group>";
+		};
 		499E551D248EA54800E9A315 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +194,9 @@
 		499E553F248EA77B00E9A315 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				499E5544248EA7DF00E9A315 /* Coordinator.swift */,
+				499E5546248EA7F800E9A315 /* AppCoordinator.swift */,
+				4913C8F8248EAAF6003E11B8 /* GameCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -187,6 +221,7 @@
 		499E5542248EA7A800E9A315 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				494A896D2490069C00213221 /* AmmoBox */,
 				494A8959248FEFF200213221 /* Explossion */,
 				494A8956248FEFC700213221 /* Bullet */,
 				494A894F248FEF7400213221 /* Plane */,
@@ -198,9 +233,7 @@
 		499E5543248EA7B400E9A315 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				499E5544248EA7DF00E9A315 /* Coordinator.swift */,
-				499E5546248EA7F800E9A315 /* AppCoordinator.swift */,
-				4913C8F8248EAAF6003E11B8 /* GameCoordinator.swift */,
+				494A8967249001EC00213221 /* UI */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -269,6 +302,7 @@
 				494A895E248FF01900213221 /* spark.png in Resources */,
 				4913C8FE248EAD26003E11B8 /* StartNewGameViewController.xib in Resources */,
 				499E5536248EA54B00E9A315 /* LaunchScreen.storyboard in Resources */,
+				494A896C2490022000213221 /* AmmoView.xib in Resources */,
 				499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */,
 				494A8953248FEF9900213221 /* texture.png in Resources */,
 			);
@@ -282,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4913C8F9248EAAF6003E11B8 /* GameCoordinator.swift in Sources */,
+				494A8971249006B900213221 /* AmmoBox.swift in Sources */,
 				499E5545248EA7DF00E9A315 /* Coordinator.swift in Sources */,
 				499E5547248EA7F800E9A315 /* AppCoordinator.swift in Sources */,
+				494A896A2490021200213221 /* AmmoView.swift in Sources */,
 				499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */,
 				499E552C248EA54800E9A315 /* SceneDelegate.swift in Sources */,
 				4913C8FD248EAD26003E11B8 /* StartNewGameViewController.swift in Sources */,
