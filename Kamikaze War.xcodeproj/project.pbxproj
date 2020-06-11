@@ -28,6 +28,7 @@
 		49758F6F2491472C003149A7 /* ProBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49758F6E2491472C003149A7 /* ProBullet.swift */; };
 		49758F7224914857003149A7 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49758F7124914857003149A7 /* GameRules.swift */; };
 		49758F75249149DE003149A7 /* NormalGameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49758F74249149DE003149A7 /* NormalGameRules.swift */; };
+		49758F772491540E003149A7 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49758F762491540E003149A7 /* GameViewModel.swift */; };
 		499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5529248EA54800E9A315 /* AppDelegate.swift */; };
 		499E552C248EA54800E9A315 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E552B248EA54800E9A315 /* SceneDelegate.swift */; };
 		499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499E5532248EA54B00E9A315 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		49758F6E2491472C003149A7 /* ProBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProBullet.swift; sourceTree = "<group>"; };
 		49758F7124914857003149A7 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
 		49758F74249149DE003149A7 /* NormalGameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalGameRules.swift; sourceTree = "<group>"; };
+		49758F762491540E003149A7 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		499E5526248EA54800E9A315 /* Kamikaze War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kamikaze War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		499E5529248EA54800E9A315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499E552B248EA54800E9A315 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				494A8961248FF0AB00213221 /* GameViewController.swift */,
 				494A8962248FF0AB00213221 /* GameViewController.xib */,
+				49758F762491540E003149A7 /* GameViewModel.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				49758F75249149DE003149A7 /* NormalGameRules.swift in Sources */,
 				494A895B248FF00200213221 /* Explossion.swift in Sources */,
 				494A8966248FF24800213221 /* StartNewGameViewModel.swift in Sources */,
+				49758F772491540E003149A7 /* GameViewModel.swift in Sources */,
 				494A894E248FEF5800213221 /* Collisions.swift in Sources */,
 				494A8963248FF0AB00213221 /* GameViewController.swift in Sources */,
 				494A8958248FEFD900213221 /* BasicBullet.swift in Sources */,

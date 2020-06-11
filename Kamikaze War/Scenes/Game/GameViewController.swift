@@ -10,18 +10,41 @@ import ARKit
 
 class GameViewController: UIViewController {
     
+    // MARK: IBOutlets
     @IBOutlet private weak var sceneView: ARSCNView!
     @IBOutlet private weak var scoreLabel: UILabel!
     @IBOutlet private weak var bulletsStack: UIStackView!
     
-    var planes: [Plane] = []
-    let startPlanes = 5
+    var planes: [Plane] = [] // TODO DELETE
+    let startPlanes = 5 // TODO DELETE
+    
+    // MARK: Constants
+    private let viewModel: GameViewModel
+    private let configuration = ARWorldTrackingConfiguration()
+    
+    // MARK: Lifecycle
+    init(viewModel: GameViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupComponents()
         addGestures()
+        showBulletTypes()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.viewWasLoaded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -30,17 +53,8 @@ class GameViewController: UIViewController {
         sceneView.session.pause()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        for index in 0..<startPlanes {
-            addNewPlane(withId: index)
-        }
-        addAmmoBox()
-    }
-    
-    fileprivate func setupComponents() {
-        let configuration = ARWorldTrackingConfiguration()
+    // MARK: Private Functions
+    private func setupComponents() {
         sceneView.session.run(configuration)
         sceneView.session.delegate = self
         
@@ -53,18 +67,19 @@ class GameViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    private func addNewPlane(withId id: Int) {
-        let plane = Plane(withId: id)
-        let x = CGFloat.random(in: -1.5...1.5) // Un metro y medio a la izq o a la derecha
-        let y = CGFloat.random(in: -2...2) // Dos metro arriba o abajo
-        let z = CGFloat.random(in: -2 ... -1) // Profundidad
+    
+    
+    private func showBulletTypes() {
+        let b = AmmoView()
+        b.load(text: "100", image: UIImage(named: "ic_pro_bullet"))
         
-        plane.position = SCNVector3(x, y, z)
-        self.planes.append(plane)
+        bulletsStack.addArrangedSubview(b)
         
-        self.sceneView.prepare([plane]) { _ in
-            self.sceneView.scene.rootNode.addChildNode(plane)
-        }
+        let a = AmmoView()
+        a.load(text: "∞", image: UIImage(named: "ic_basic_bullet"))
+        
+        bulletsStack.addArrangedSubview(a)
+        
     }
     
     private func addAmmoBox() {
@@ -74,7 +89,7 @@ class GameViewController: UIViewController {
         let z = CGFloat.random(in: -2 ... -1) // Profundidad
         
         ammoBox.position = SCNVector3(x, y, z)
-//        self.planes.append(plane)
+        //        self.planes.append(plane)
         
         self.sceneView.prepare([ammoBox]) { _ in
             self.sceneView.scene.rootNode.addChildNode(ammoBox)
@@ -91,8 +106,40 @@ class GameViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(bullet)
     }
     
+    private func exitGame() {
+        viewModel.exitGame()
+    }
+    
+    private func resumeGame() {
+        sceneView.session.run(configuration)
+    }
+    
+    // MARK: IBActions
     @IBAction private func tapExitButton(_ sender: Any) {
-        // TODO:
+        sceneView.session.pause()
+        
+        let exitAction = UIAlertAction(title: "Exit", style: .destructive, handler: { [weak self] _ in
+            self?.exitGame()
+        })
+        let continueAction = UIAlertAction(title: "Continue", style: .cancel, handler: { [weak self] _ in
+            self?.resumeGame()
+        })
+        
+        let alert = UIAlertController(title: "Do you want exit?", message: "Your current score will not save", preferredStyle: .alert)
+        alert.addAction(exitAction)
+        alert.addAction(continueAction)
+        
+        self.present(alert, animated: true)
+    }
+}
+
+//MARK: - GameViewDelegate
+extension GameViewController: GameViewDelegate {
+    
+    func planeAdded(_ plane: Plane) {
+        sceneView.prepare([plane]) { [weak self] _ in
+            self?.sceneView.scene.rootNode.addChildNode(plane)
+        }
     }
 }
 
@@ -129,14 +176,16 @@ extension GameViewController: SCNPhysicsContactDelegate {
                 }
             }
             
-            // cargamos un nuevo avión
-            self.addNewPlane(withId: id)
+            // cargamos un nuevo avión // TODO
+            //            self.addNewPlane(withId: id)
+            
         }
     }
 }
 
 //MARK: - ARSCNViewDelegate
 extension GameViewController: ARSessionDelegate {
+    
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         // Billboard, que el avión siempre nos mire
         if let cameraOrientation = session.currentFrame?.camera.transform {

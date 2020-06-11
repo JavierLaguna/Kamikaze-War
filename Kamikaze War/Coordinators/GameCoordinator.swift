@@ -33,7 +33,12 @@ class GameCoordinator: Coordinator {
     }
     
     private func goToGame() {
-        let gameViewController = GameViewController()
+        let gameRules = NormalGameRules() // TODO: uses different types of dificult
+        let gameViewModel = GameViewModel(gameRules: gameRules)
+        let gameViewController = GameViewController(viewModel: gameViewModel)
+        
+        gameViewModel.viewDelegate = gameViewController
+        gameViewModel.coordinatorDelegate = self
         
         presenter.pushViewController(gameViewController, animated: false)
     }
@@ -44,5 +49,13 @@ extension GameCoordinator: NewGameCoordinatorDelegate {
     
     func startGame() {
         goToGame()
+    }
+}
+
+// MARK: GameCoordinatorDelegate
+extension GameCoordinator: GameCoordinatorDelegate {
+    
+    func gameDidFinish() {
+        presenter.popViewController(animated: true)
     }
 }

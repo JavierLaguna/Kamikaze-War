@@ -14,4 +14,6 @@ protocol GameRules {
     var ammoBoxesOnInit: Int { get }
     var maxAmmoBoxesOnScreen: Int { get }
     var bulletDamage: Int { get }
+    var pointsForPlaneDesctruction: Int { get }
+    var bulletsForAmmoBox: Int { get }
 }

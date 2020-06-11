@@ -14,4 +14,6 @@ struct NormalGameRules: GameRules {
     var ammoBoxesOnInit: Int = 1
     var maxAmmoBoxesOnScreen: Int = 3
     var bulletDamage: Int = 25
+    var pointsForPlaneDesctruction: Int = 8
+    var bulletsForAmmoBox: Int = 10
 }
