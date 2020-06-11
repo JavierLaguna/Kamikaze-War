@@ -15,9 +15,6 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var scoreLabel: UILabel!
     @IBOutlet private weak var bulletsStack: UIStackView!
     
-    var planes: [Plane] = [] // TODO DELETE
-    let startPlanes = 5 // TODO DELETE
-    
     // MARK: Constants
     private let viewModel: GameViewModel
     private let configuration = ARWorldTrackingConfiguration()
@@ -37,14 +34,14 @@ class GameViewController: UIViewController {
         
         setupComponents()
         addGestures()
-        showBulletTypes()
-        
+        showBulletTypes() // TODO
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.viewWasLoaded()
+        let cameraOrientation = sceneView.session.currentFrame?.camera.transform
+        viewModel.viewWasLoaded(cameraOrientation: cameraOrientation)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,8 +54,6 @@ class GameViewController: UIViewController {
     private func setupComponents() {
         sceneView.session.run(configuration)
         sceneView.session.delegate = self
-        
-        // tenemos que indicar que se nos avise cuando haya un contacto
         sceneView.scene.physicsWorld.contactDelegate = self
     }
     
@@ -66,8 +61,6 @@ class GameViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapScreen))
         view.addGestureRecognizer(tap)
     }
-    
-    
     
     private func showBulletTypes() {
         let b = AmmoView()
@@ -82,7 +75,7 @@ class GameViewController: UIViewController {
         
     }
     
-    private func addAmmoBox() {
+    private func addAmmoBox() { // TODO
         let ammoBox = AmmoBox(withId: 0)
         let x = CGFloat.random(in: -1.5...1.5) // Un metro y medio a la izq o a la derecha
         let y = CGFloat.random(in: -2...2) // Dos metro arriba o abajo
@@ -141,44 +134,25 @@ extension GameViewController: GameViewDelegate {
             self?.sceneView.scene.rootNode.addChildNode(plane)
         }
     }
+    
+    func showExplosion(on node: SCNNode) {
+        Explossion.show(with: node, in: sceneView.scene)
+    }
 }
 
 //MARK: - Contact delegate
 extension GameViewController: SCNPhysicsContactDelegate {
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        // Si algo choca con el avión
+        
         if contact.nodeA.physicsBody?.categoryBitMask == Collisions.plane.rawValue ||
             contact.nodeB.physicsBody?.categoryBitMask == Collisions.plane.rawValue {
             
-            var node: SCNNode!
-            var id: Int = 0
             if let plane = contact.nodeA as? Plane {
-                node = contact.nodeA
-                id = plane.id
+                viewModel.planeBeaten(plane, node: contact.nodeA)
             } else if let plane = contact.nodeB as? Plane {
-                node = contact.nodeB
-                id = plane.id
+                viewModel.planeBeaten(plane, node: contact.nodeB)
             }
-            
-            // Explosion
-            Explossion.show(with: node, in: sceneView.scene)
-            
-            self.sceneView.scene.rootNode.childNodes.forEach { node in
-                if let plane = node as? Plane, plane.id == id {
-                    
-                    plane.removeFromParentNode()
-                    planes = planes.filter{ $0.id != id}
-                    
-                } else if let bullet = node as? Bullet {
-                    
-                    bullet.removeFromParentNode()
-                }
-            }
-            
-            // cargamos un nuevo avión // TODO
-            //            self.addNewPlane(withId: id)
-            
         }
     }
 }
@@ -187,9 +161,10 @@ extension GameViewController: SCNPhysicsContactDelegate {
 extension GameViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        // Billboard, que el avión siempre nos mire
         if let cameraOrientation = session.currentFrame?.camera.transform {
-            self.planes.forEach { $0.face(to: cameraOrientation) }
+            
+            viewModel.cameraOrientation = cameraOrientation
+            viewModel.planes.forEach { $0.face(to: cameraOrientation) }
         }
     }
 }

@@ -13,7 +13,7 @@ class Plane: SCNNode {
     var id: Int = 0
     var life: Int = 100
     
-    init(withId id: Int) {
+    init(withId id: Int, target: simd_float4x4?) {
         super.init()
         
         self.id = id
@@ -47,6 +47,14 @@ class Plane: SCNNode {
         let hoverSequence = SCNAction.sequence([hoverUp, hoverDown])
         let hoverForever = SCNAction.repeatForever(hoverSequence)
         self.runAction(hoverForever)
+
+        if let columns = target?.columns {
+            let vector = SCNVector3(columns.3.x, columns.3.y, columns.3.z)
+            let moveToTarget = SCNAction.move(to: vector, duration: 10)
+            self.runAction(moveToTarget) {
+                print("ACTION FINISH")
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -57,5 +65,9 @@ class Plane: SCNNode {
         transform.columns.3.y = self.position.y
         transform.columns.3.z = self.position.z
         self.transform = SCNMatrix4(transform)
+    }
+    
+    func destroy() {
+        removeFromParentNode()
     }
 }

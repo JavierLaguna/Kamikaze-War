@@ -15,6 +15,7 @@ protocol GameCoordinatorDelegate: class {
 
 protocol GameViewDelegate: class {
     func planeAdded(_ plane: Plane)
+    func showExplosion(on node: SCNNode)
 }
 
 class GameViewModel {
@@ -27,6 +28,7 @@ class GameViewModel {
     weak var viewDelegate: GameViewDelegate?
     var planes: [Plane] = []
     var ammoBoxes: [AmmoBox] = []
+    var cameraOrientation: simd_float4x4?
     
     // MARK: Lifecycle
     init(gameRules: GameRules) {
@@ -34,12 +36,21 @@ class GameViewModel {
     }
     
     // MARK: Public Functions
-    func viewWasLoaded() {
+    func viewWasLoaded(cameraOrientation: simd_float4x4?) {
+        self.cameraOrientation = cameraOrientation
         startGame()
     }
     
     func exitGame() {
         coordinatorDelegate?.gameDidFinish()
+    }
+    
+    func planeBeaten(_ plane: Plane, node: SCNNode) {
+        // TODO ADD DAMAGE LOGIC
+        planes = planes.filter { $0.id != plane.id }
+        plane.removeFromParentNode()
+        viewDelegate?.showExplosion(on: node)
+        addNewPlane(withId: plane.id)
     }
     
     // MARK: Private Functions
@@ -55,7 +66,7 @@ class GameViewModel {
     }
     
     private func addNewPlane(withId id: Int) {
-        let plane = Plane(withId: id)
+        let plane = Plane(withId: id, target: cameraOrientation)
         planes.append(plane)
 
         let x = CGFloat.random(in: -2.5 ... 2.5)

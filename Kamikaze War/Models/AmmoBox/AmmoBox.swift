@@ -34,7 +34,13 @@ class AmmoBox: SCNNode {
         self.physicsBody?.contactTestBitMask = Collisions.bullet.rawValue
         
         let rotation = SCNAction.rotate(by: .pi, around: SCNVector3(0, 1, 0), duration: 5)
-        let hoverForever = SCNAction.repeatForever(rotation)
+        let rotationForever = SCNAction.repeatForever(rotation)
+        self.runAction(rotationForever)
+        
+        let hoverUp = SCNAction.moveBy(x: 0, y: 0.2, z: 0, duration: 2.5)
+        let hoverDown = SCNAction.moveBy(x: 0, y: -0.2, z: 0, duration: 2.5)
+        let hoverSequence = SCNAction.sequence([hoverUp, hoverDown])
+        let hoverForever = SCNAction.repeatForever(hoverSequence)
         self.runAction(hoverForever)
     }
     
