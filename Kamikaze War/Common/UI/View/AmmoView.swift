@@ -67,10 +67,12 @@ class AmmoView: UIView {
 extension AmmoView: AmmoViewDelegate {
     
     func bulletUpdated() {
-        label.text = viewModel.countText
-        changeSelection()
-        
-        setNeedsLayout()
-        layoutIfNeeded()
+        DispatchQueue.main.async { [weak self] in
+            self?.label.text = self?.viewModel.countText
+            self?.changeSelection()
+            
+            self?.setNeedsLayout()
+            self?.layoutIfNeeded()
+        }
     }
 }
