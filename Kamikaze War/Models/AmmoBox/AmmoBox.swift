@@ -18,7 +18,7 @@ class AmmoBox: SCNNode {
         self.id = id
         
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
-
+        
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.purple
         material.isDoubleSided = true
@@ -45,4 +45,8 @@ class AmmoBox: SCNNode {
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError() }
+    
+    func destroy() {
+        removeFromParentNode()
+    }
 }

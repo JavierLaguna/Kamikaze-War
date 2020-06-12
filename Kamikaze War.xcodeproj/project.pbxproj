@@ -35,6 +35,7 @@
 		499E5536248EA54B00E9A315 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499E5534248EA54B00E9A315 /* LaunchScreen.storyboard */; };
 		499E5545248EA7DF00E9A315 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5544248EA7DF00E9A315 /* Coordinator.swift */; };
 		499E5547248EA7F800E9A315 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5546248EA7F800E9A315 /* AppCoordinator.swift */; };
+		49A5FDA52493CB750056720B /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA42493CB750056720B /* LifeBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		499E5537248EA54B00E9A315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		499E5544248EA7DF00E9A315 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		499E5546248EA7F800E9A315 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		49A5FDA42493CB750056720B /* LifeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				494A8954248FEFBB00213221 /* ship.scn */,
 				494A8952248FEF9900213221 /* texture.png */,
 				494A8950248FEF8400213221 /* Plane.swift */,
+				49A5FDA42493CB750056720B /* LifeBar.swift */,
 			);
 			path = Plane;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				494A8951248FEF8400213221 /* Plane.swift in Sources */,
 				49758F7224914857003149A7 /* GameRules.swift in Sources */,
 				49758F75249149DE003149A7 /* NormalGameRules.swift in Sources */,
+				49A5FDA52493CB750056720B /* LifeBar.swift in Sources */,
 				494A895B248FF00200213221 /* Explossion.swift in Sources */,
 				494A8966248FF24800213221 /* StartNewGameViewModel.swift in Sources */,
 				49758F772491540E003149A7 /* GameViewModel.swift in Sources */,

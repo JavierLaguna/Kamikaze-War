@@ -48,7 +48,7 @@ class GameViewModel {
     func planeBeaten(_ plane: Plane, node: SCNNode) {
         // TODO ADD DAMAGE LOGIC
         planes = planes.filter { $0.id != plane.id }
-        plane.removeFromParentNode()
+        plane.destroy()
         viewDelegate?.showExplosion(on: node)
         addNewPlane(withId: plane.id)
     }
@@ -66,14 +66,14 @@ class GameViewModel {
     }
     
     private func addNewPlane(withId id: Int) {
-        let plane = Plane(withId: id, target: cameraOrientation)
-        planes.append(plane)
-
         let x = CGFloat.random(in: -2.5 ... 2.5)
         let y = CGFloat.random(in: -1.5 ... 1.5)
         let z = CGFloat.random(in: -4.5 ... -1)
-        plane.position = SCNVector3(x, y, z)
-    
+        let position = SCNVector3(x, y, z)
+        
+        let plane = Plane(withId: id, at: position, target: cameraOrientation)
+        planes.append(plane)
+        
         viewDelegate?.planeAdded(plane)
     }
 }

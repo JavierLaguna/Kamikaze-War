@@ -77,9 +77,9 @@ class GameViewController: UIViewController {
     
     private func addAmmoBox() { // TODO
         let ammoBox = AmmoBox(withId: 0)
-        let x = CGFloat.random(in: -1.5...1.5) // Un metro y medio a la izq o a la derecha
-        let y = CGFloat.random(in: -2...2) // Dos metro arriba o abajo
-        let z = CGFloat.random(in: -2 ... -1) // Profundidad
+        let x = CGFloat.random(in: -1.5...1.5)
+        let y = CGFloat.random(in: -2...2)
+        let z = CGFloat.random(in: -2 ... -1)
         
         ammoBox.position = SCNVector3(x, y, z)
         //        self.planes.append(plane)
@@ -132,6 +132,7 @@ extension GameViewController: GameViewDelegate {
     func planeAdded(_ plane: Plane) {
         sceneView.prepare([plane]) { [weak self] _ in
             self?.sceneView.scene.rootNode.addChildNode(plane)
+            self?.sceneView.scene.rootNode.addChildNode(plane.lifeBar)
         }
     }
     
