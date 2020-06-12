@@ -70,13 +70,7 @@ class GameViewController: UIViewController {
     }
     
     @objc private func tapScreen() {
-        guard let camera = self.sceneView.session.currentFrame?.camera else {
-            return
-        }
-        
-        let bullet = viewModel.selectedBullet
-        bullet.fireFrom(camera)
-        sceneView.scene.rootNode.addChildNode(bullet)
+        viewModel.fire()
     }
     
     private func exitGame() {
@@ -120,6 +114,15 @@ extension GameViewController: GameViewDelegate {
         sceneView.prepare([ammoBox]) { [weak self] _ in
             self?.sceneView.scene.rootNode.addChildNode(ammoBox)
         }
+    }
+    
+    func bulletFired(_ bullet: Bullet) {
+        guard let camera = self.sceneView.session.currentFrame?.camera else {
+             return
+         }
+         
+         bullet.fireFrom(camera)
+         sceneView.scene.rootNode.addChildNode(bullet)
     }
     
     func showExplosion(on node: SCNNode) {

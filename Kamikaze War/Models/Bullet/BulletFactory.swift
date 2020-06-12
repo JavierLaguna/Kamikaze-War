@@ -19,7 +19,8 @@ struct BulletFactory {
     }
     
     func getInitialBullet() -> Bullet {
-        return getBasicBullet()
+//        return getBasicBullet() // TODO
+        return getProBullet()
     }
     
     private func getBasicBullet() -> Bullet {

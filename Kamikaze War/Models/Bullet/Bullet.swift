@@ -10,6 +10,7 @@ import ARKit
 
 protocol Bullet: SCNNode {
     var id: String { get }
+    var notificationsId: NSNotification.Name { get }
     var velocity: Float { get set }
     var damage: Float { get set }
     var infinite: Bool { get set }

@@ -16,6 +16,7 @@ protocol GameCoordinatorDelegate: class {
 protocol GameViewDelegate: class {
     func planeAdded(_ plane: Plane)
     func ammoBoxAdded(_ ammoBox: AmmoBox)
+    func bulletFired(_ bullet: Bullet)
     func showExplosion(on node: SCNNode)
 }
 
@@ -57,6 +58,19 @@ class GameViewModel {
     
     func exitGame() {
         coordinatorDelegate?.gameDidFinish()
+    }
+    
+    func fire() {
+        viewDelegate?.bulletFired(selectedBullet)
+        
+        if !selectedBullet.infinite, let count = selectedBullet.count {
+            selectedBullet.count = count - 1
+            if selectedBullet.count == 0 {
+                print("Change Bullet") // TODO
+            }
+            
+            NotificationCenter.default.post(name: selectedBullet.notificationsId, object: selectedBullet)
+        }
     }
     
     func planeBeaten(_ plane: Plane, node: SCNNode) {

@@ -9,34 +9,46 @@
 import UIKit
 
 protocol AmmoViewDelegate: class {
-    
+    func bulletUpdated()
 }
 
 class AmmoViewModel {
     
-    // MARK: Constants
-    let bullet: Bullet
-    let icon: UIImage
-    let color: UIColor
-    
     // MARK: Variables
     weak var viewDelegate: AmmoViewDelegate?
-    var countText: String
+    var bullet: Bullet
+    var icon: UIImage { return bullet.bulletIcon }
+    var color: UIColor { return bullet.bulletColor }
+    var countText: String { return bullet.infinite ? "∞" : "\(bullet.count ?? 0)" }
     var isSelected: Bool = false
     
     // MARK: Lifecycle
     init(bullet: Bullet, isSelected: Bool = false) {
         self.bullet = bullet
-        self.countText = bullet.infinite ? "∞" : "\(bullet.count ?? 0)"
-        self.icon = bullet.bulletIcon
-        self.color = bullet.bulletColor
         self.isSelected = isSelected
     }
     
     // MARK: Public Functions
     func viewWasLoaded() {
-        
+        addObservers()
     }
     
     // MARK: Private Functions
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(bulletDidChanged(_:)), name: bullet.notificationsId, object: nil)
+    }
+    
+    private func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: bullet.notificationsId, object: nil)
+    }
+    
+    @objc private func bulletDidChanged(_ notification: Notification) {
+        guard let bullet = notification.object as? Bullet else {
+            return
+        }
+        
+        self.bullet = bullet
+        viewDelegate?.bulletUpdated()
+    }
 }

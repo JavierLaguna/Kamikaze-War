@@ -26,6 +26,7 @@ class AmmoView: UIView {
         commonInit()
         loadViewModelData()
         
+        viewModel.viewDelegate = self
         viewModel.viewWasLoaded()
     }
     
@@ -59,5 +60,17 @@ class AmmoView: UIView {
     
     private func changeSelection() {
         layer.borderWidth = viewModel.isSelected ? 1 : 0
+    }
+}
+
+// MARK: AmmoViewDelegate
+extension AmmoView: AmmoViewDelegate {
+    
+    func bulletUpdated() {
+        label.text = viewModel.countText
+        changeSelection()
+        
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }

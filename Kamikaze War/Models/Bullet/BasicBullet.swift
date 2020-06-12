@@ -11,6 +11,7 @@ import ARKit
 class BasicBullet: SCNNode, Bullet {
     
     var id: String = "BasicBullet"
+    var notificationsId: NSNotification.Name = NSNotification.Name("NC_BasicBullet")
     var velocity: Float
     var damage: Float
     var infinite: Bool

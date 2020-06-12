@@ -11,6 +11,7 @@ import ARKit
 class ProBullet: SCNNode, Bullet {
    
     var id: String = "ProBullet"
+    var notificationsId: NSNotification.Name = NSNotification.Name("NC_ProBullet")
     var velocity: Float
     var damage: Float
     var infinite: Bool
