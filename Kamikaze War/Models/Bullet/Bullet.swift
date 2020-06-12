@@ -9,10 +9,12 @@
 import ARKit
 
 protocol Bullet: SCNNode {
+    var id: String { get }
     var velocity: Float { get set }
     var damage: Float { get set }
     var infinite: Bool { get set }
     var count: Int? { get set }
+    var bulletIcon: UIImage { get }
     var bulletNode: SCNSphere { get }
     var bulletColor: UIColor { get }
     

@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
         
         setupComponents()
         addGestures()
-        showBulletTypes() // TODO
+        showBullets()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,17 +62,11 @@ class GameViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    private func showBulletTypes() { // TODO
-        let b = AmmoView()
-        b.load(text: "100", image: UIImage(named: "ic_pro_bullet"))
-        
-        bulletsStack.addArrangedSubview(b)
-        
-        let a = AmmoView()
-        a.load(text: "∞", image: UIImage(named: "ic_basic_bullet"))
-        
-        bulletsStack.addArrangedSubview(a)
-        
+    private func showBullets() {
+        viewModel.ammoViewModels.forEach { viewModel in
+            let view = AmmoView(viewModel: viewModel)
+            bulletsStack.addArrangedSubview(view)
+        }
     }
     
     @objc private func tapScreen() {

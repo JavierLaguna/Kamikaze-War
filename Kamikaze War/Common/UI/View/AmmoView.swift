@@ -10,17 +10,27 @@ import UIKit
 
 class AmmoView: UIView {
     
+    // MARK: IBOutlets
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var label: UILabel!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: Constants
+    let viewModel: AmmoViewModel
+    
+    // MARK: LifeCycle
+    init(viewModel: AmmoViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(frame: .zero)
+        
         commonInit()
+        loadViewModelData()
+        
+        viewModel.viewWasLoaded()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
+        fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate func commonInit() {
@@ -39,8 +49,15 @@ class AmmoView: UIView {
         }
     }
     
-    func load(text: String, image: UIImage?) {
-        label.text = text
-        imageView.image = image
+    private func loadViewModelData() {
+        label.text = viewModel.countText
+        imageView.image = viewModel.icon
+        layer.borderColor = viewModel.color.cgColor
+        
+        changeSelection()
+    }
+    
+    private func changeSelection() {
+        layer.borderWidth = viewModel.isSelected ? 1 : 0
     }
 }

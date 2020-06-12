@@ -33,6 +33,11 @@ class GameViewModel {
     var cameraOrientation: simd_float4x4?
     var bullets: [Bullet] = []
     var selectedBullet: Bullet
+    var ammoViewModels: [AmmoViewModel] {
+        return bullets.map {
+            return AmmoViewModel(bullet: $0, isSelected: $0.id == selectedBullet.id)
+        }
+    }
     
     // MARK: Lifecycle
     init(gameRules: GameRules) {

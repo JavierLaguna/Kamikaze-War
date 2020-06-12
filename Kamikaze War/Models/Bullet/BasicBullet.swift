@@ -10,10 +10,12 @@ import ARKit
 
 class BasicBullet: SCNNode, Bullet {
     
+    var id: String = "BasicBullet"
     var velocity: Float
     var damage: Float
     var infinite: Bool
     var count: Int?
+    var bulletIcon: UIImage = UIImage(named: "ic_basic_bullet") ?? UIImage()
     var bulletNode: SCNSphere = SCNSphere(radius: 0.02)
     var bulletColor: UIColor = .red
     

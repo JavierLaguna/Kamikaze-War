@@ -37,6 +37,7 @@
 		499E5547248EA7F800E9A315 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5546248EA7F800E9A315 /* AppCoordinator.swift */; };
 		49A5FDA52493CB750056720B /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA42493CB750056720B /* LifeBar.swift */; };
 		49A5FDA72493E4E10056720B /* BulletFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA62493E4E10056720B /* BulletFactory.swift */; };
+		49A5FDA92493F5C00056720B /* AmmoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA82493F5C00056720B /* AmmoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		499E5546248EA7F800E9A315 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		49A5FDA42493CB750056720B /* LifeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
 		49A5FDA62493E4E10056720B /* BulletFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletFactory.swift; sourceTree = "<group>"; };
+		49A5FDA82493F5C00056720B /* AmmoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmmoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				494A89692490021200213221 /* AmmoView.swift */,
 				494A896B2490022000213221 /* AmmoView.xib */,
+				49A5FDA82493F5C00056720B /* AmmoViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				494A8951248FEF8400213221 /* Plane.swift in Sources */,
 				49758F7224914857003149A7 /* GameRules.swift in Sources */,
 				49758F75249149DE003149A7 /* NormalGameRules.swift in Sources */,
+				49A5FDA92493F5C00056720B /* AmmoViewModel.swift in Sources */,
 				49A5FDA52493CB750056720B /* LifeBar.swift in Sources */,
 				494A895B248FF00200213221 /* Explossion.swift in Sources */,
 				494A8966248FF24800213221 /* StartNewGameViewModel.swift in Sources */,

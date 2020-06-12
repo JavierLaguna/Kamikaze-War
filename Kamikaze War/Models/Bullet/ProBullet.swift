@@ -10,10 +10,12 @@ import ARKit
 
 class ProBullet: SCNNode, Bullet {
    
+    var id: String = "ProBullet"
     var velocity: Float
     var damage: Float
     var infinite: Bool
     var count: Int?
+    var bulletIcon: UIImage = UIImage(named: "ic_pro_bullet") ?? UIImage()
     var bulletNode: SCNSphere = SCNSphere(radius: 0.03)
     var bulletColor: UIColor = .blue
     
