@@ -38,6 +38,11 @@
 		49A5FDA52493CB750056720B /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA42493CB750056720B /* LifeBar.swift */; };
 		49A5FDA72493E4E10056720B /* BulletFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA62493E4E10056720B /* BulletFactory.swift */; };
 		49A5FDA92493F5C00056720B /* AmmoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA82493F5C00056720B /* AmmoViewModel.swift */; };
+		49ACA80F24942C6300E85D5A /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80A24942C6300E85D5A /* explosion.wav */; };
+		49ACA81024942C6300E85D5A /* game_over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80B24942C6300E85D5A /* game_over.mp3 */; };
+		49ACA81124942C6300E85D5A /* reload.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80C24942C6300E85D5A /* reload.mp3 */; };
+		49ACA81224942C6300E85D5A /* fire_basic_gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80D24942C6300E85D5A /* fire_basic_gun.wav */; };
+		49ACA81324942C6300E85D5A /* fire_pro_gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80E24942C6300E85D5A /* fire_pro_gun.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +79,11 @@
 		49A5FDA42493CB750056720B /* LifeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
 		49A5FDA62493E4E10056720B /* BulletFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletFactory.swift; sourceTree = "<group>"; };
 		49A5FDA82493F5C00056720B /* AmmoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmmoViewModel.swift; sourceTree = "<group>"; };
+		49ACA80A24942C6300E85D5A /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		49ACA80B24942C6300E85D5A /* game_over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_over.mp3; sourceTree = "<group>"; };
+		49ACA80C24942C6300E85D5A /* reload.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reload.mp3; sourceTree = "<group>"; };
+		49ACA80D24942C6300E85D5A /* fire_basic_gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fire_basic_gun.wav; sourceTree = "<group>"; };
+		49ACA80E24942C6300E85D5A /* fire_pro_gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fire_pro_gun.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +227,7 @@
 		499E553E248EA76D00E9A315 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49ACA80924942C5400E85D5A /* Sounds */,
 				499E5532248EA54B00E9A315 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -268,6 +279,18 @@
 				494A8967249001EC00213221 /* UI */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		49ACA80924942C5400E85D5A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				49ACA80A24942C6300E85D5A /* explosion.wav */,
+				49ACA80D24942C6300E85D5A /* fire_basic_gun.wav */,
+				49ACA80E24942C6300E85D5A /* fire_pro_gun.wav */,
+				49ACA80B24942C6300E85D5A /* game_over.mp3 */,
+				49ACA80C24942C6300E85D5A /* reload.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,15 +351,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49ACA80F24942C6300E85D5A /* explosion.wav in Resources */,
 				494A8964248FF0AB00213221 /* GameViewController.xib in Resources */,
 				494A8955248FEFBB00213221 /* ship.scn in Resources */,
 				494A895F248FF01900213221 /* Explossion.scnp in Resources */,
 				494A895E248FF01900213221 /* spark.png in Resources */,
 				4913C8FE248EAD26003E11B8 /* StartNewGameViewController.xib in Resources */,
+				49ACA81024942C6300E85D5A /* game_over.mp3 in Resources */,
+				49ACA81324942C6300E85D5A /* fire_pro_gun.wav in Resources */,
+				49ACA81124942C6300E85D5A /* reload.mp3 in Resources */,
 				499E5536248EA54B00E9A315 /* LaunchScreen.storyboard in Resources */,
 				494A896C2490022000213221 /* AmmoView.xib in Resources */,
 				499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */,
 				494A8953248FEF9900213221 /* texture.png in Resources */,
+				49ACA81224942C6300E85D5A /* fire_basic_gun.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
