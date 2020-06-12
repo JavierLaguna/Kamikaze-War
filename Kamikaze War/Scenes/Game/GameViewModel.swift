@@ -54,6 +54,13 @@ class GameViewModel {
         addNewPlane(withId: plane.id)
     }
     
+    func ammoBoxBeaten(_ ammoBox: AmmoBox, node: SCNNode) {
+        ammoBoxes = ammoBoxes.filter { $0.id != ammoBox.id }
+        ammoBox.destroy()
+        viewDelegate?.showExplosion(on: node)
+        addNewAmmoBox(withId: ammoBox.id)
+    }
+    
     // MARK: Private Functions
     private func startGame() {
         showInitialPlanes()

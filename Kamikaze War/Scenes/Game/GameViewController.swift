@@ -137,14 +137,30 @@ extension GameViewController: GameViewDelegate {
 extension GameViewController: SCNPhysicsContactDelegate {
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        guard let categoryBitMaskA = contact.nodeA.physicsBody?.categoryBitMask,
+            let categoryBitMaskB = contact.nodeB.physicsBody?.categoryBitMask else {
+                return
+        }
         
-        if contact.nodeA.physicsBody?.categoryBitMask == Collisions.plane.rawValue ||
-            contact.nodeB.physicsBody?.categoryBitMask == Collisions.plane.rawValue {
+        let planeBit = Collisions.plane.rawValue
+        let bulletBit = Collisions.bullet.rawValue
+        let ammoBoxBit = Collisions.ammoBox.rawValue
+        
+        if (categoryBitMaskA == planeBit && categoryBitMaskB == bulletBit) ||
+            (categoryBitMaskA == bulletBit && categoryBitMaskB == planeBit) {
             
             if let plane = contact.nodeA as? Plane {
                 viewModel.planeBeaten(plane, node: contact.nodeA)
             } else if let plane = contact.nodeB as? Plane {
                 viewModel.planeBeaten(plane, node: contact.nodeB)
+            }
+        } else if (categoryBitMaskA == ammoBoxBit && categoryBitMaskB == bulletBit) ||
+            (categoryBitMaskA == bulletBit && categoryBitMaskB == ammoBoxBit) {
+                        
+            if let ammoBox = contact.nodeA as? AmmoBox {
+                viewModel.ammoBoxBeaten(ammoBox, node: contact.nodeA)
+            } else if let ammoBox = contact.nodeB as? AmmoBox {
+                viewModel.ammoBoxBeaten(ammoBox, node: contact.nodeB)
             }
         }
     }
@@ -154,10 +170,11 @@ extension GameViewController: SCNPhysicsContactDelegate {
 extension GameViewController: ARSessionDelegate {
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        if let cameraOrientation = session.currentFrame?.camera.transform {
-            
-            viewModel.cameraOrientation = cameraOrientation
-            viewModel.planes.forEach { $0.face(to: cameraOrientation) }
+        guard let cameraOrientation = session.currentFrame?.camera.transform else {
+            return
         }
+        
+        viewModel.cameraOrientation = cameraOrientation
+        viewModel.planes.forEach { $0.face(to: cameraOrientation) }
     }
 }

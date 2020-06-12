@@ -11,7 +11,7 @@ import Foundation
 struct NormalGameRules: GameRules {
     var planesOnInit: Int = 2
     var maxPlanesOnScreen: Int = 4
-    var ammoBoxesOnInit: Int = 1
+    var ammoBoxesOnInit: Int = 2
     var maxAmmoBoxesOnScreen: Int = 3
     var bulletDamage: Int = 25
     var pointsForPlaneDesctruction: Int = 8
