@@ -17,6 +17,9 @@ class AmmoView: UIView {
     // MARK: Constants
     let viewModel: AmmoViewModel
     
+    // MARK: Variables
+    var onSelectBullet: ((_ bullet: Bullet) -> Void)?
+    
     // MARK: LifeCycle
     init(viewModel: AmmoViewModel) {
         self.viewModel = viewModel
@@ -25,6 +28,7 @@ class AmmoView: UIView {
         
         commonInit()
         loadViewModelData()
+        addGestures()
         
         viewModel.viewDelegate = self
         viewModel.viewWasLoaded()
@@ -34,7 +38,8 @@ class AmmoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func commonInit() {
+    // MARK: Private Functions
+    private func commonInit() {
         let bundle = Bundle.init(for: AmmoView.self)
         if let bundleViews = bundle.loadNibNamed("AmmoView", owner: self, options: nil),
             let contentView = bundleViews.first as? UIView {
@@ -59,7 +64,19 @@ class AmmoView: UIView {
     }
     
     private func changeSelection() {
-        layer.borderWidth = viewModel.isSelected ? 1 : 0
+        layer.borderWidth = viewModel.isSelected ? 2 : 0
+    }
+    
+    private func addGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectThisBullets))
+        self.addGestureRecognizer(tap)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc private func selectThisBullets() {
+        if !viewModel.isSelected {
+            onSelectBullet?(viewModel.bullet)
+        }
     }
 }
 

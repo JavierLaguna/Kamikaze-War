@@ -33,10 +33,12 @@ class GameViewModel {
     var ammoBoxes: [AmmoBox] = []
     var cameraOrientation: simd_float4x4?
     var bullets: [Bullet] = []
-    var selectedBullet: Bullet
+    var selectedBullet: Bullet {
+        return bullets.first(where: { $0.isSelected }) ?? bullets[0]
+    }
     var ammoViewModels: [AmmoViewModel] {
         return bullets.map {
-            return AmmoViewModel(bullet: $0, isSelected: $0.id == selectedBullet.id)
+            return AmmoViewModel(bullet: $0)
         }
     }
     
@@ -46,7 +48,6 @@ class GameViewModel {
         
         self.bulletFactory = bulletFactory
         self.gameRules = gameRules
-        self.selectedBullet = bulletFactory.getInitialBullet()
         self.bullets = bulletFactory.getBullets()
     }
     
@@ -82,6 +83,14 @@ class GameViewModel {
         ammoBox.destroy()
         viewDelegate?.showExplosion(on: node)
         addNewAmmoBox(withId: ammoBox.id)
+    }
+    
+    func changeSelectedBulletTo(_ bullet: Bullet) {
+        bullets = bullets.map { item in
+            item.isSelected = bullet.id == item.id
+            NotificationCenter.default.post(name: item.notificationsId, object: item)
+            return item
+        }
     }
     
     // MARK: Private Functions
@@ -127,14 +136,15 @@ class GameViewModel {
     }
     
     private func update(bullet: Bullet, with count: Int) {
-        if !selectedBullet.infinite, let currentCount = selectedBullet.count {
-            selectedBullet.count = currentCount + count
+        if !bullet.infinite, let currentCount = bullet.count {
+            bullet.count = currentCount + count
             
-            if selectedBullet.count == 0 {
-                print("Change Bullet") // TODO
+            if bullet.count == 0,
+                let firstAvailableBullet = bullets.first(where: { $0.infinite || $0.count ?? 0 > 0 }) {
+                changeSelectedBulletTo(firstAvailableBullet)
             }
             
-            NotificationCenter.default.post(name: selectedBullet.notificationsId, object: selectedBullet)
+            NotificationCenter.default.post(name: bullet.notificationsId, object: bullet)
         }
     }
 }

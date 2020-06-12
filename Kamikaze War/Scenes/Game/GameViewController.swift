@@ -63,8 +63,9 @@ class GameViewController: UIViewController {
     }
     
     private func showBullets() {
-        viewModel.ammoViewModels.forEach { viewModel in
-            let view = AmmoView(viewModel: viewModel)
+        viewModel.ammoViewModels.forEach { vm in
+            let view = AmmoView(viewModel: vm)
+            view.onSelectBullet = viewModel.changeSelectedBulletTo
             bulletsStack.addArrangedSubview(view)
         }
     }

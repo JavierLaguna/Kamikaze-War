@@ -15,6 +15,7 @@ protocol Bullet: SCNNode {
     var damage: Float { get set }
     var infinite: Bool { get set }
     var count: Int? { get set }
+    var isSelected: Bool { get set }
     var bulletIcon: UIImage { get }
     var bulletNode: SCNSphere { get }
     var bulletColor: UIColor { get }

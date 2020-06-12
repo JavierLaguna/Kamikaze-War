@@ -16,15 +16,17 @@ class BasicBullet: SCNNode, Bullet {
     var damage: Float
     var infinite: Bool
     var count: Int?
+    var isSelected: Bool
     var bulletIcon: UIImage = UIImage(named: "ic_basic_bullet") ?? UIImage()
     var bulletNode: SCNSphere = SCNSphere(radius: 0.02)
     var bulletColor: UIColor = .red
     
-    init(velocity: Float, damage: Float, infinite: Bool, count: Int? = nil) {
+    init(velocity: Float, damage: Float, infinite: Bool, count: Int? = nil, isSelected: Bool = false) {
         self.velocity = velocity
         self.damage = damage
         self.infinite = infinite
         self.count = count
+        self.isSelected = isSelected
         
         super.init()
     }

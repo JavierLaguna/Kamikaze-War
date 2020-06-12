@@ -18,13 +18,8 @@ struct BulletFactory {
         ]
     }
     
-    func getInitialBullet() -> Bullet {
-//        return getBasicBullet() // TODO
-        return getProBullet()
-    }
-    
     private func getBasicBullet() -> Bullet {
-        return BasicBullet(velocity: 9, damage: gameRules.bulletDamage, infinite: true)
+        return BasicBullet(velocity: 9, damage: gameRules.bulletDamage, infinite: true, isSelected: true)
     }
     
     private func getProBullet() -> Bullet {

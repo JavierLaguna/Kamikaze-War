@@ -20,12 +20,11 @@ class AmmoViewModel {
     var icon: UIImage { return bullet.bulletIcon }
     var color: UIColor { return bullet.bulletColor }
     var countText: String { return bullet.infinite ? "∞" : "\(bullet.count ?? 0)" }
-    var isSelected: Bool = false
+    var isSelected: Bool { return bullet.isSelected }
     
     // MARK: Lifecycle
-    init(bullet: Bullet, isSelected: Bool = false) {
+    init(bullet: Bullet) {
         self.bullet = bullet
-        self.isSelected = isSelected
     }
     
     // MARK: Public Functions
