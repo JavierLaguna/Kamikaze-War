@@ -13,7 +13,8 @@ protocol GameRules {
     var maxPlanesOnScreen: Int { get }
     var ammoBoxesOnInit: Int { get }
     var maxAmmoBoxesOnScreen: Int { get }
-    var bulletDamage: Int { get }
+    var bulletDamage: Float { get }
     var pointsForPlaneDesctruction: Int { get }
     var bulletsForAmmoBox: Int { get }
+    var proBulletsOnInit: Int { get }
 }

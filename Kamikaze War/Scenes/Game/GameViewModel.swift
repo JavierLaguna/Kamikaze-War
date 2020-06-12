@@ -23,6 +23,7 @@ class GameViewModel {
     
     // MARK: Constants
     let gameRules: GameRules
+    let bulletFactory: BulletFactory
     
     // MARK: Variables
     weak var coordinatorDelegate: GameCoordinatorDelegate?
@@ -30,10 +31,17 @@ class GameViewModel {
     var planes: [Plane] = []
     var ammoBoxes: [AmmoBox] = []
     var cameraOrientation: simd_float4x4?
+    var bullets: [Bullet] = []
+    var selectedBullet: Bullet
     
     // MARK: Lifecycle
     init(gameRules: GameRules) {
+        let bulletFactory = BulletFactory(gameRules: gameRules)
+        
+        self.bulletFactory = bulletFactory
         self.gameRules = gameRules
+        self.selectedBullet = bulletFactory.getInitialBullet()
+        self.bullets = bulletFactory.getBullets()
     }
     
     // MARK: Public Functions
@@ -55,6 +63,7 @@ class GameViewModel {
     }
     
     func ammoBoxBeaten(_ ammoBox: AmmoBox, node: SCNNode) {
+        // TODO ADD BULLETs
         ammoBoxes = ammoBoxes.filter { $0.id != ammoBox.id }
         ammoBox.destroy()
         viewDelegate?.showExplosion(on: node)

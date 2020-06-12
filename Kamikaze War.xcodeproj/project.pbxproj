@@ -36,6 +36,7 @@
 		499E5545248EA7DF00E9A315 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5544248EA7DF00E9A315 /* Coordinator.swift */; };
 		499E5547248EA7F800E9A315 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5546248EA7F800E9A315 /* AppCoordinator.swift */; };
 		49A5FDA52493CB750056720B /* LifeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA42493CB750056720B /* LifeBar.swift */; };
+		49A5FDA72493E4E10056720B /* BulletFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA62493E4E10056720B /* BulletFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		499E5544248EA7DF00E9A315 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		499E5546248EA7F800E9A315 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		49A5FDA42493CB750056720B /* LifeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeBar.swift; sourceTree = "<group>"; };
+		49A5FDA62493E4E10056720B /* BulletFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +109,9 @@
 		494A8956248FEFC700213221 /* Bullet */ = {
 			isa = PBXGroup;
 			children = (
-				49758F6C249143DD003149A7 /* Bullet.swift */,
 				494A8957248FEFD900213221 /* BasicBullet.swift */,
+				49758F6C249143DD003149A7 /* Bullet.swift */,
+				49A5FDA62493E4E10056720B /* BulletFactory.swift */,
 				49758F6E2491472C003149A7 /* ProBullet.swift */,
 			);
 			path = Bullet;
@@ -350,6 +353,7 @@
 				494A896A2490021200213221 /* AmmoView.swift in Sources */,
 				499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */,
 				499E552C248EA54800E9A315 /* SceneDelegate.swift in Sources */,
+				49A5FDA72493E4E10056720B /* BulletFactory.swift in Sources */,
 				4913C8FD248EAD26003E11B8 /* StartNewGameViewController.swift in Sources */,
 				494A8951248FEF8400213221 /* Plane.swift in Sources */,
 				49758F7224914857003149A7 /* GameRules.swift in Sources */,

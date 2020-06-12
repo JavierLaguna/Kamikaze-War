@@ -80,7 +80,7 @@ class GameViewController: UIViewController {
             return
         }
         
-        let bullet = ProBullet()
+        let bullet = viewModel.selectedBullet
         bullet.fireFrom(camera)
         sceneView.scene.rootNode.addChildNode(bullet)
     }
