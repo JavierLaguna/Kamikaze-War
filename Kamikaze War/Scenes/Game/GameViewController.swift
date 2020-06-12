@@ -62,7 +62,7 @@ class GameViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    private func showBulletTypes() {
+    private func showBulletTypes() { // TODO
         let b = AmmoView()
         b.load(text: "100", image: UIImage(named: "ic_pro_bullet"))
         
@@ -73,20 +73,6 @@ class GameViewController: UIViewController {
         
         bulletsStack.addArrangedSubview(a)
         
-    }
-    
-    private func addAmmoBox() { // TODO
-        let ammoBox = AmmoBox(withId: 0)
-        let x = CGFloat.random(in: -1.5...1.5)
-        let y = CGFloat.random(in: -2...2)
-        let z = CGFloat.random(in: -2 ... -1)
-        
-        ammoBox.position = SCNVector3(x, y, z)
-        //        self.planes.append(plane)
-        
-        self.sceneView.prepare([ammoBox]) { _ in
-            self.sceneView.scene.rootNode.addChildNode(ammoBox)
-        }
     }
     
     @objc private func tapScreen() {
@@ -133,6 +119,12 @@ extension GameViewController: GameViewDelegate {
         sceneView.prepare([plane]) { [weak self] _ in
             self?.sceneView.scene.rootNode.addChildNode(plane)
             self?.sceneView.scene.rootNode.addChildNode(plane.lifeBar)
+        }
+    }
+    
+    func ammoBoxAdded(_ ammoBox: AmmoBox) {
+        sceneView.prepare([ammoBox]) { [weak self] _ in
+            self?.sceneView.scene.rootNode.addChildNode(ammoBox)
         }
     }
     

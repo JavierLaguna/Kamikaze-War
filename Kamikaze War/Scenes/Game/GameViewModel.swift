@@ -15,6 +15,7 @@ protocol GameCoordinatorDelegate: class {
 
 protocol GameViewDelegate: class {
     func planeAdded(_ plane: Plane)
+    func ammoBoxAdded(_ ammoBox: AmmoBox)
     func showExplosion(on node: SCNNode)
 }
 
@@ -56,13 +57,31 @@ class GameViewModel {
     // MARK: Private Functions
     private func startGame() {
         showInitialPlanes()
-        //              addAmmoBox()
+        showInitialAmmoBoxes()
     }
     
     private func showInitialPlanes() {
         for index in 0..<gameRules.planesOnInit {
             addNewPlane(withId: index)
         }
+    }
+    
+    private func showInitialAmmoBoxes() {
+        for index in 0..<gameRules.ammoBoxesOnInit {
+            addNewAmmoBox(withId: index)
+        }
+    }
+    
+    private func addNewAmmoBox(withId id: Int) {
+        let ammoBox = AmmoBox(withId: 0)
+        ammoBoxes.append(ammoBox)
+        
+        let x = CGFloat.random(in: -1.5...1.5)
+        let y = CGFloat.random(in: -2...2)
+        let z = CGFloat.random(in: -2 ... -1)
+        ammoBox.position = SCNVector3(x, y, z)
+        
+        viewDelegate?.ammoBoxAdded(ammoBox)
     }
     
     private func addNewPlane(withId id: Int) {
