@@ -57,11 +57,12 @@ class GameViewModel {
         startGame()
     }
     
-    func exitGame() {
+    func exitGame() { // TODO GAME OVER SOUND
         coordinatorDelegate?.gameDidFinish()
     }
     
     func fire() {
+        selectedBullet.bulletSound.play()
         viewDelegate?.bulletFired(selectedBullet)
         update(bullet: selectedBullet, with: -1)
     }
@@ -70,6 +71,7 @@ class GameViewModel {
         // TODO ADD DAMAGE LOGIC
         planes = planes.filter { $0.id != plane.id }
         plane.destroy()
+        Sounds.explosion.play()
         viewDelegate?.showExplosion(on: node)
         addNewPlane(withId: plane.id)
     }
@@ -81,6 +83,7 @@ class GameViewModel {
         
         ammoBoxes = ammoBoxes.filter { $0.id != ammoBox.id }
         ammoBox.destroy()
+        Sounds.reload.play()
         viewDelegate?.showExplosion(on: node)
         addNewAmmoBox(withId: ammoBox.id)
     }

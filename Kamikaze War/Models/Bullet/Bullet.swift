@@ -19,6 +19,7 @@ protocol Bullet: SCNNode {
     var bulletIcon: UIImage { get }
     var bulletNode: SCNSphere { get }
     var bulletColor: UIColor { get }
+    var bulletSound: Sounds { get }
     
     func fireFrom(_ camera: ARCamera)
 }

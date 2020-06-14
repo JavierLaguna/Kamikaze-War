@@ -20,6 +20,7 @@ class ProBullet: SCNNode, Bullet {
     var bulletIcon: UIImage = UIImage(named: "ic_pro_bullet") ?? UIImage()
     var bulletNode: SCNSphere = SCNSphere(radius: 0.03)
     var bulletColor: UIColor = .blue
+    var bulletSound: Sounds = Sounds.proFire
     
     init(velocity: Float, damage: Float, infinite: Bool, count: Int? = nil, isSelected: Bool = false) {
         self.velocity = velocity
