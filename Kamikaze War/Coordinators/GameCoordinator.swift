@@ -31,8 +31,15 @@ class GameCoordinator: Coordinator {
     
     override func finish() {}
     
-    private func goToGame() {
-        let gameRules = NormalGameRules() // TODO: uses different types of dificult
+    private func goToGame(gameMode: GameLevelMode) {
+        let gameRules: GameRules
+        switch gameMode {
+        case .normal:
+            gameRules = NormalGameRules()
+        case .hard:
+            gameRules = HardGameRules()
+        }
+        
         let gameViewModel = GameViewModel(highScoreRepository: highScoreRepository, gameRules: gameRules)
         let gameViewController = GameViewController(viewModel: gameViewModel)
         
@@ -46,8 +53,8 @@ class GameCoordinator: Coordinator {
 // MARK: NewGameCoordinatorDelegate
 extension GameCoordinator: NewGameCoordinatorDelegate {
     
-    func startGame() {
-        goToGame()
+    func startGame(gameMode: GameLevelMode) {
+        goToGame(gameMode: gameMode)
     }
 }
 

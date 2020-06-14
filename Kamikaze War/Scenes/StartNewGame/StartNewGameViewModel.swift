@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NewGameCoordinatorDelegate: class {
-    func startGame()
+    func startGame(gameMode: GameLevelMode)
 }
 
 protocol NewGameViewDelegate: class {
@@ -37,8 +37,10 @@ class StartNewGameViewModel {
         getHighScore()
     }
     
-    func startNewGame() {
-        coordinatorDelegate?.startGame()
+    func startNewGame(hardIsOn: Bool) {
+        let gameMode: GameLevelMode = hardIsOn ? .hard : .normal
+        
+        coordinatorDelegate?.startGame(gameMode: gameMode)
     }
     
     // MARK: Private Functions

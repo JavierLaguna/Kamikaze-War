@@ -12,6 +12,7 @@ class StartNewGameViewController: UIViewController {
     
     // MARK: IBOutlets
     @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var modeSwitch: UISwitch!
     
     // MARK: Constants
     private let viewModel: StartNewGameViewModel
@@ -45,7 +46,7 @@ class StartNewGameViewController: UIViewController {
     
     // MARK: IBActions
     @IBAction private func tapStartNewGameButton(_ sender: Any) {
-        viewModel.startNewGame()
+        viewModel.startNewGame(hardIsOn: modeSwitch.isOn)
     }
 }
 

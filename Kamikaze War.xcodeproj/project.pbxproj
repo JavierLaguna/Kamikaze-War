@@ -32,6 +32,8 @@
 		499402F82496239D00BFBA2A /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499402F72496239D00BFBA2A /* Sounds.swift */; };
 		499402FD249671AA00BFBA2A /* HighScoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499402FC249671AA00BFBA2A /* HighScoreRepository.swift */; };
 		499403002496721400BFBA2A /* HighScoreUserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499402FF2496721400BFBA2A /* HighScoreUserDefaultsRepository.swift */; };
+		49940302249687AA00BFBA2A /* GameLevelMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49940301249687AA00BFBA2A /* GameLevelMode.swift */; };
+		499403042496888900BFBA2A /* HardGameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499403032496888900BFBA2A /* HardGameRules.swift */; };
 		499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5529248EA54800E9A315 /* AppDelegate.swift */; };
 		499E552C248EA54800E9A315 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E552B248EA54800E9A315 /* SceneDelegate.swift */; };
 		499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499E5532248EA54B00E9A315 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		499402F72496239D00BFBA2A /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		499402FC249671AA00BFBA2A /* HighScoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreRepository.swift; sourceTree = "<group>"; };
 		499402FF2496721400BFBA2A /* HighScoreUserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreUserDefaultsRepository.swift; sourceTree = "<group>"; };
+		49940301249687AA00BFBA2A /* GameLevelMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLevelMode.swift; sourceTree = "<group>"; };
+		499403032496888900BFBA2A /* HardGameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardGameRules.swift; sourceTree = "<group>"; };
 		499E5526248EA54800E9A315 /* Kamikaze War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kamikaze War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		499E5529248EA54800E9A315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499E552B248EA54800E9A315 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,8 +188,10 @@
 		49758F7324914899003149A7 /* GameRules */ = {
 			isa = PBXGroup;
 			children = (
+				49940301249687AA00BFBA2A /* GameLevelMode.swift */,
 				49758F7124914857003149A7 /* GameRules.swift */,
 				49758F74249149DE003149A7 /* NormalGameRules.swift */,
+				499403032496888900BFBA2A /* HardGameRules.swift */,
 			);
 			path = GameRules;
 			sourceTree = "<group>";
@@ -400,11 +406,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499403042496888900BFBA2A /* HardGameRules.swift in Sources */,
 				4913C8F9248EAAF6003E11B8 /* GameCoordinator.swift in Sources */,
 				494A8971249006B900213221 /* AmmoBox.swift in Sources */,
 				49758F6D249143DD003149A7 /* Bullet.swift in Sources */,
 				49758F6F2491472C003149A7 /* ProBullet.swift in Sources */,
 				499E5545248EA7DF00E9A315 /* Coordinator.swift in Sources */,
+				49940302249687AA00BFBA2A /* GameLevelMode.swift in Sources */,
 				499E5547248EA7F800E9A315 /* AppCoordinator.swift in Sources */,
 				494A896A2490021200213221 /* AmmoView.swift in Sources */,
 				499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */,
