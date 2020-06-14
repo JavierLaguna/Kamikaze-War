@@ -4,8 +4,8 @@
 
 > Kamikaze War is a practice of 'Realidad Aumentada' for KeepCoding Mobile 10
 
-![Start Game](/captures/start_game.png)
-![Game](/captures/game.png)
+![Start Game](/captures/start_game.PNG)
+![Game](/captures/game.PNG)
 
 ## Application Structure
 
