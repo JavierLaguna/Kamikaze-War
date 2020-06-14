@@ -25,8 +25,9 @@ protocol GameViewDelegate: class {
 class GameViewModel {
     
     // MARK: Constants
-    let gameRules: GameRules
-    let bulletFactory: BulletFactory
+    private let highScoreRepository: HighScoreRepository
+    private let gameRules: GameRules
+    private let bulletFactory: BulletFactory
     
     // MARK: Variables
     weak var coordinatorDelegate: GameCoordinatorDelegate?
@@ -52,7 +53,9 @@ class GameViewModel {
     }
     
     // MARK: Lifecycle
-    init(gameRules: GameRules) {
+    init(highScoreRepository: HighScoreRepository, gameRules: GameRules) {
+        self.highScoreRepository = highScoreRepository
+        
         let bulletFactory = BulletFactory(gameRules: gameRules)
         
         self.bulletFactory = bulletFactory
@@ -179,6 +182,8 @@ class GameViewModel {
     
     private func gameOver() {
         Sounds.gameOver.play()
+        
+        highScoreRepository.setHighScore(score)
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }

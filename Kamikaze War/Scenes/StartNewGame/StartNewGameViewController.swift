@@ -32,6 +32,12 @@ class StartNewGameViewController: UIViewController {
         configureNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.viewWasLoaded()
+    }
+    
     // MARK: Private functions
     private func configureNavigationBar() {
         navigationController?.isNavigationBarHidden = true
@@ -40,5 +46,13 @@ class StartNewGameViewController: UIViewController {
     // MARK: IBActions
     @IBAction private func tapStartNewGameButton(_ sender: Any) {
         viewModel.startNewGame()
+    }
+}
+
+// MARK: NewGameViewDelegate
+extension StartNewGameViewController: NewGameViewDelegate {
+    
+    func scoreFetched() {
+        scoreLabel.text = "Hight Score: \(viewModel.highScore)"
     }
 }

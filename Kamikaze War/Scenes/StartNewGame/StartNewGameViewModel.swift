@@ -19,20 +19,22 @@ protocol NewGameViewDelegate: class {
 class StartNewGameViewModel {
     
     // MARK: Constants
+    private let highScoreRepository: HighScoreRepository
     
     // MARK: Variables
     weak var coordinatorDelegate: NewGameCoordinatorDelegate?
     weak var viewDelegate: NewGameViewDelegate?
+    var highScore: Int = 0
     
     
     // MARK: Lifecycle
-    init() {
-        
+    init(highScoreRepository: HighScoreRepository) {
+        self.highScoreRepository = highScoreRepository
     }
     
     // MARK: Public Functions
     func viewWasLoaded() {
-        // TODO Get High Score
+        getHighScore()
     }
     
     func startNewGame() {
@@ -40,5 +42,8 @@ class StartNewGameViewModel {
     }
     
     // MARK: Private Functions
-    
+    private func getHighScore() {
+        highScore = highScoreRepository.getHighScore()
+        viewDelegate?.scoreFetched()
+    }
 }

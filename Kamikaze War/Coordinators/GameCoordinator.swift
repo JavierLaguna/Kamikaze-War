@@ -11,30 +11,29 @@ import UIKit
 class GameCoordinator: Coordinator {
     
     // MARK: Constants
-    
-    // MARK: Variables
+    private let highScoreRepository: HighScoreRepository
     
     // MARK: Lifecycle
-    init() {
+    init(highScoreRepository: HighScoreRepository) {
+        self.highScoreRepository = highScoreRepository
         super.init()
     }
     
     override func start() {
-        let startNewGameViewModel = StartNewGameViewModel()
+        let startNewGameViewModel = StartNewGameViewModel(highScoreRepository: highScoreRepository)
         let startNewGameViewController = StartNewGameViewController(viewModel: startNewGameViewModel)
         
-//        startNewGameViewModel.viewDelegate = startNewGameViewController
+        startNewGameViewModel.viewDelegate = startNewGameViewController
         startNewGameViewModel.coordinatorDelegate = self
         
         presenter.pushViewController(startNewGameViewController, animated: false)
     }
     
-    override func finish() {
-    }
+    override func finish() {}
     
     private func goToGame() {
         let gameRules = NormalGameRules() // TODO: uses different types of dificult
-        let gameViewModel = GameViewModel(gameRules: gameRules)
+        let gameViewModel = GameViewModel(highScoreRepository: highScoreRepository, gameRules: gameRules)
         let gameViewController = GameViewController(viewModel: gameViewModel)
         
         gameViewModel.viewDelegate = gameViewController

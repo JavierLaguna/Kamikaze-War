@@ -12,6 +12,10 @@ class AppCoordinator: Coordinator {
     
     private let window: UIWindow
     
+    lazy private var highScoreRepository: HighScoreRepository = {
+        return HighScoreUserDefaultsRepository()
+    }()
+    
     // MARK: Repositories Injection
     
     init(window: UIWindow) {
@@ -19,7 +23,7 @@ class AppCoordinator: Coordinator {
     }
     
     override func start() {
-        let gameCoordinator = GameCoordinator()
+        let gameCoordinator = GameCoordinator(highScoreRepository: highScoreRepository)
         addChildCoordinator(gameCoordinator)
         gameCoordinator.start()
         
