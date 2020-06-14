@@ -82,6 +82,19 @@ class GameViewController: UIViewController {
         sceneView.session.run(configuration)
     }
     
+    private func gameOverAlert(score: Int) {
+        sceneView.session.pause()
+        
+        let exitAction = UIAlertAction(title: "Accept", style: .default, handler: { [weak self] _ in
+            self?.exitGame()
+        })
+        
+        let alert = UIAlertController(title: "GAME OVER", message: "Your score: \(score)", preferredStyle: .alert)
+        alert.addAction(exitAction)
+        
+        self.present(alert, animated: true)
+    }
+    
     // MARK: IBActions
     @IBAction private func tapExitButton(_ sender: Any) {
         sceneView.session.pause()
@@ -119,15 +132,23 @@ extension GameViewController: GameViewDelegate {
     
     func bulletFired(_ bullet: Bullet) {
         guard let camera = self.sceneView.session.currentFrame?.camera else {
-             return
-         }
-         
-         bullet.fireFrom(camera)
-         sceneView.scene.rootNode.addChildNode(bullet)
+            return
+        }
+        
+        bullet.fireFrom(camera)
+        sceneView.scene.rootNode.addChildNode(bullet)
     }
     
     func showExplosion(on node: SCNNode) {
         Explossion.show(with: node, in: sceneView.scene)
+    }
+    
+    func updateScore(score: Int) {
+        scoreLabel.text = "\(score)"
+    }
+    
+    func gameOver(score: Int) {
+        gameOverAlert(score: score)
     }
 }
 
@@ -154,7 +175,7 @@ extension GameViewController: SCNPhysicsContactDelegate {
             }
         } else if (categoryBitMaskA == ammoBoxBit && categoryBitMaskB == bulletBit) ||
             (categoryBitMaskA == bulletBit && categoryBitMaskB == ammoBoxBit) {
-                        
+            
             if let ammoBox = contact.nodeA as? AmmoBox {
                 viewModel.ammoBoxBeaten(ammoBox, node: contact.nodeA)
             } else if let ammoBox = contact.nodeB as? AmmoBox {

@@ -13,6 +13,7 @@ class Plane: SCNNode {
     var id: Int = 0
     var life: Int = 100
     var lifeBar: LifeBar
+    var didReachTarget: ((_ plane: Plane) -> Void)?
     
     init(withId id: Int, at position: SCNVector3, target: simd_float4x4?) {
         self.id = id
@@ -51,8 +52,10 @@ class Plane: SCNNode {
             let vector = SCNVector3(columns.3.x, columns.3.y, columns.3.z)
             let moveToTarget = SCNAction.move(to: vector, duration: 10)
             lifeBar.runAction(moveToTarget)
-            self.runAction(moveToTarget) {
-                print("ACTION FINISH")
+            self.runAction(moveToTarget) { [weak self] in
+                guard let self = self else { return }
+                
+                self.didReachTarget?(self)
             }
         }
     }
@@ -69,6 +72,7 @@ class Plane: SCNNode {
     }
     
     func destroy() {
+        didReachTarget = nil
         removeFromParentNode()
         lifeBar.destroy()
     }

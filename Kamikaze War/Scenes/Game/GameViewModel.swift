@@ -18,6 +18,8 @@ protocol GameViewDelegate: class {
     func ammoBoxAdded(_ ammoBox: AmmoBox)
     func bulletFired(_ bullet: Bullet)
     func showExplosion(on node: SCNNode)
+    func updateScore(score: Int)
+    func gameOver(score: Int)
 }
 
 class GameViewModel {
@@ -29,6 +31,7 @@ class GameViewModel {
     // MARK: Variables
     weak var coordinatorDelegate: GameCoordinatorDelegate?
     weak var viewDelegate: GameViewDelegate?
+    var score: Int = 0
     var planes: [Plane] = []
     var ammoBoxes: [AmmoBox] = []
     var cameraOrientation: simd_float4x4?
@@ -57,7 +60,7 @@ class GameViewModel {
         startGame()
     }
     
-    func exitGame() { // TODO GAME OVER SOUND
+    func exitGame() {
         coordinatorDelegate?.gameDidFinish()
     }
     
@@ -133,6 +136,7 @@ class GameViewModel {
         let position = SCNVector3(x, y, z)
         
         let plane = Plane(withId: id, at: position, target: cameraOrientation)
+        plane.didReachTarget = planeReachTarget
         planes.append(plane)
         
         viewDelegate?.planeAdded(plane)
@@ -148,6 +152,20 @@ class GameViewModel {
             }
             
             NotificationCenter.default.post(name: bullet.notificationsId, object: bullet)
+        }
+    }
+        
+    private func planeReachTarget(_ plane: Plane) {
+        gameOver()
+    }
+    
+    private func gameOver() {
+        Sounds.gameOver.play()
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.viewDelegate?.gameOver(score: self.score)
         }
     }
 }
