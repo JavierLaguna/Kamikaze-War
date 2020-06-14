@@ -19,7 +19,7 @@ class Plane: SCNNode {
     // MARK: Constructor
     init(withId id: Int, at position: SCNVector3, target: simd_float4x4?) {
         self.id = id
-        self.lifeBar = LifeBar(at: SCNVector3(position.x, position.y + 0.2, position.z))
+        self.lifeBar = LifeBar(at: SCNVector3(position.x, position.y + 0.2, position.z - 0.2))
         
         super.init()
         

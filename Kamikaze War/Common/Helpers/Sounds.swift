@@ -31,7 +31,7 @@ enum Sounds {
         }
     }
     
-    private var type:AVFileType {
+    private var type: AVFileType {
         switch self {
         case .explosion: return .wav
         case .basicFire: return .wav

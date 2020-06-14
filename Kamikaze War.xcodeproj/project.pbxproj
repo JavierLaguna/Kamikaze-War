@@ -123,7 +123,6 @@
 				494A8954248FEFBB00213221 /* ship.scn */,
 				494A8952248FEF9900213221 /* texture.png */,
 				494A8950248FEF8400213221 /* Plane.swift */,
-				49A5FDA42493CB750056720B /* LifeBar.swift */,
 			);
 			path = Plane;
 			sourceTree = "<group>";
@@ -213,6 +212,30 @@
 			path = UserDefaultsRepos;
 			sourceTree = "<group>";
 		};
+		499403072496ABF200BFBA2A /* LifeBar */ = {
+			isa = PBXGroup;
+			children = (
+				49A5FDA42493CB750056720B /* LifeBar.swift */,
+			);
+			path = LifeBar;
+			sourceTree = "<group>";
+		};
+		499403082496AC1400BFBA2A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				499402F72496239D00BFBA2A /* Sounds.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		499403092496AC4300BFBA2A /* Collisions */ = {
+			isa = PBXGroup;
+			children = (
+				494A894D248FEF5800213221 /* Collisions.swift */,
+			);
+			path = Collisions;
+			sourceTree = "<group>";
+		};
 		499E551D248EA54800E9A315 = {
 			isa = PBXGroup;
 			children = (
@@ -293,11 +316,12 @@
 		499E5542248EA7A800E9A315 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				494A894D248FEF5800213221 /* Collisions.swift */,
 				494A896D2490069C00213221 /* AmmoBox */,
 				494A8956248FEFC700213221 /* Bullet */,
+				499403092496AC4300BFBA2A /* Collisions */,
 				494A8959248FEFF200213221 /* Explossion */,
 				49758F7324914899003149A7 /* GameRules */,
+				499403072496ABF200BFBA2A /* LifeBar */,
 				494A894F248FEF7400213221 /* Plane */,
 			);
 			path = Models;
@@ -306,8 +330,8 @@
 		499E5543248EA7B400E9A315 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				499403082496AC1400BFBA2A /* Helpers */,
 				494A8967249001EC00213221 /* UI */,
-				499402F72496239D00BFBA2A /* Sounds.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
