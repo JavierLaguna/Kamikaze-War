@@ -34,6 +34,7 @@
 		499403002496721400BFBA2A /* HighScoreUserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499402FF2496721400BFBA2A /* HighScoreUserDefaultsRepository.swift */; };
 		49940302249687AA00BFBA2A /* GameLevelMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49940301249687AA00BFBA2A /* GameLevelMode.swift */; };
 		499403042496888900BFBA2A /* HardGameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499403032496888900BFBA2A /* HardGameRules.swift */; };
+		499403062496A3ED00BFBA2A /* reload.wav in Resources */ = {isa = PBXBuildFile; fileRef = 499403052496A3ED00BFBA2A /* reload.wav */; };
 		499E552A248EA54800E9A315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5529248EA54800E9A315 /* AppDelegate.swift */; };
 		499E552C248EA54800E9A315 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E552B248EA54800E9A315 /* SceneDelegate.swift */; };
 		499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499E5532248EA54B00E9A315 /* Assets.xcassets */; };
@@ -45,7 +46,6 @@
 		49A5FDA92493F5C00056720B /* AmmoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5FDA82493F5C00056720B /* AmmoViewModel.swift */; };
 		49ACA80F24942C6300E85D5A /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80A24942C6300E85D5A /* explosion.wav */; };
 		49ACA81024942C6300E85D5A /* game_over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80B24942C6300E85D5A /* game_over.mp3 */; };
-		49ACA81124942C6300E85D5A /* reload.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80C24942C6300E85D5A /* reload.mp3 */; };
 		49ACA81224942C6300E85D5A /* fire_basic_gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80D24942C6300E85D5A /* fire_basic_gun.wav */; };
 		49ACA81324942C6300E85D5A /* fire_pro_gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49ACA80E24942C6300E85D5A /* fire_pro_gun.wav */; };
 /* End PBXBuildFile section */
@@ -78,6 +78,7 @@
 		499402FF2496721400BFBA2A /* HighScoreUserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreUserDefaultsRepository.swift; sourceTree = "<group>"; };
 		49940301249687AA00BFBA2A /* GameLevelMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLevelMode.swift; sourceTree = "<group>"; };
 		499403032496888900BFBA2A /* HardGameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardGameRules.swift; sourceTree = "<group>"; };
+		499403052496A3ED00BFBA2A /* reload.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reload.wav; sourceTree = "<group>"; };
 		499E5526248EA54800E9A315 /* Kamikaze War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kamikaze War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		499E5529248EA54800E9A315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499E552B248EA54800E9A315 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		49A5FDA82493F5C00056720B /* AmmoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmmoViewModel.swift; sourceTree = "<group>"; };
 		49ACA80A24942C6300E85D5A /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		49ACA80B24942C6300E85D5A /* game_over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_over.mp3; sourceTree = "<group>"; };
-		49ACA80C24942C6300E85D5A /* reload.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reload.mp3; sourceTree = "<group>"; };
 		49ACA80D24942C6300E85D5A /* fire_basic_gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fire_basic_gun.wav; sourceTree = "<group>"; };
 		49ACA80E24942C6300E85D5A /* fire_pro_gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fire_pro_gun.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -319,7 +319,7 @@
 				49ACA80D24942C6300E85D5A /* fire_basic_gun.wav */,
 				49ACA80E24942C6300E85D5A /* fire_pro_gun.wav */,
 				49ACA80B24942C6300E85D5A /* game_over.mp3 */,
-				49ACA80C24942C6300E85D5A /* reload.mp3 */,
+				499403052496A3ED00BFBA2A /* reload.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -385,12 +385,12 @@
 				49ACA80F24942C6300E85D5A /* explosion.wav in Resources */,
 				494A8964248FF0AB00213221 /* GameViewController.xib in Resources */,
 				494A8955248FEFBB00213221 /* ship.scn in Resources */,
+				499403062496A3ED00BFBA2A /* reload.wav in Resources */,
 				494A895F248FF01900213221 /* Explossion.scnp in Resources */,
 				494A895E248FF01900213221 /* spark.png in Resources */,
 				4913C8FE248EAD26003E11B8 /* StartNewGameViewController.xib in Resources */,
 				49ACA81024942C6300E85D5A /* game_over.mp3 in Resources */,
 				49ACA81324942C6300E85D5A /* fire_pro_gun.wav in Resources */,
-				49ACA81124942C6300E85D5A /* reload.mp3 in Resources */,
 				499E5536248EA54B00E9A315 /* LaunchScreen.storyboard in Resources */,
 				494A896C2490022000213221 /* AmmoView.xib in Resources */,
 				499E5533248EA54B00E9A315 /* Assets.xcassets in Resources */,

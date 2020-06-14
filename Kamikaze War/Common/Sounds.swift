@@ -27,7 +27,7 @@ enum Sounds {
         case .basicFire: return Bundle.main.url(forResource: "fire_basic_gun", withExtension: "wav")!
         case .proFire: return Bundle.main.url(forResource: "fire_pro_gun", withExtension: "wav")!
         case .gameOver: return Bundle.main.url(forResource: "game_over", withExtension: "mp3")!
-        case .reload: return Bundle.main.url(forResource: "reload", withExtension: "mp3")!
+        case .reload: return Bundle.main.url(forResource: "reload", withExtension: "wav")!
         }
     }
     
@@ -37,7 +37,7 @@ enum Sounds {
         case .basicFire: return .wav
         case .proFire: return .wav
         case .gameOver: return .mp3
-        case .reload: return .mp3
+        case .reload: return .wav
         }
     }
     
