@@ -32,6 +32,8 @@ class GameViewModel {
     // MARK: Variables
     weak var coordinatorDelegate: GameCoordinatorDelegate?
     weak var viewDelegate: GameViewDelegate?
+    private var gameDidFinish: Bool = false
+    private var currentHighScore: Int = 0
     var planes: [Plane] = []
     var ammoBoxes: [AmmoBox] = []
     var cameraOrientation: simd_float4x4?
@@ -66,6 +68,7 @@ class GameViewModel {
     // MARK: Public Functions
     func viewWasLoaded(cameraOrientation: simd_float4x4?) {
         self.cameraOrientation = cameraOrientation
+        currentHighScore = highScoreRepository.getHighScore()
         startGame()
     }
     
@@ -175,15 +178,20 @@ class GameViewModel {
             self.viewDelegate?.updateScore(score: score)
         }
     }
-        
+    
     private func planeReachTarget(_ plane: Plane) {
         gameOver()
     }
     
     private func gameOver() {
+        guard !gameDidFinish else { return }
+        
+        gameDidFinish = true
         Sounds.gameOver.play()
         
-        highScoreRepository.setHighScore(score)
+        if score > currentHighScore {
+            highScoreRepository.setHighScore(score)
+        }
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
