@@ -117,6 +117,14 @@ class GameViewModel {
         }
     }
     
+    func pauseGame() {
+        planes.forEach { $0.pause() }
+    }
+    
+    func resumeGame() {
+        planes.forEach { $0.resume() }
+    }
+    
     // MARK: Private Functions
     private func startGame() {
         showInitialPlanes()

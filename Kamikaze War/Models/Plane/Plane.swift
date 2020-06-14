@@ -10,11 +10,13 @@ import ARKit
 
 class Plane: SCNNode {
     
+    // MARK: Variables
+    private var life: Float = 100
     var id: Int = 0
-    var life: Float = 100
     var lifeBar: LifeBar
     var didReachTarget: ((_ plane: Plane) -> Void)?
     
+    // MARK: Constructor
     init(withId id: Int, at position: SCNVector3, target: simd_float4x4?) {
         self.id = id
         self.lifeBar = LifeBar(at: SCNVector3(position.x, position.y + 0.2, position.z))
@@ -38,7 +40,6 @@ class Plane: SCNNode {
         
         // Posicionar el avión
         self.position = position
-       
         
         // Animar el avión
         let hoverUp = SCNAction.moveBy(x: 0, y: 0.2, z: 0, duration: 2.5)
@@ -47,11 +48,13 @@ class Plane: SCNNode {
         let hoverForever = SCNAction.repeatForever(hoverSequence)
         self.runAction(hoverForever)
         lifeBar.runAction(hoverForever)
-
+        
         if let columns = target?.columns {
             let vector = SCNVector3(columns.3.x, columns.3.y, columns.3.z)
             let moveToTarget = SCNAction.move(to: vector, duration: 10)
+            
             lifeBar.runAction(moveToTarget)
+            
             self.runAction(moveToTarget) { [weak self] in
                 guard let self = self else { return }
                 
@@ -62,6 +65,7 @@ class Plane: SCNNode {
     
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
+    // MARK: Public Functions
     func face(to objectOrientation: simd_float4x4) {
         var transform = objectOrientation
         transform.columns.3.x = self.position.x
@@ -69,6 +73,16 @@ class Plane: SCNNode {
         transform.columns.3.z = self.position.z
         self.transform = SCNMatrix4(transform)
         lifeBar.face(to: objectOrientation)
+    }
+    
+    func pause() {
+        isPaused = true
+        lifeBar.pause()
+    }
+    
+    func resume() {
+        isPaused = false
+        lifeBar.resume()
     }
     
     func beaten(damage: Float) -> Bool {

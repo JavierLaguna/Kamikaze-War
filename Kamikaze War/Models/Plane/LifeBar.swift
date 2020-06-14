@@ -9,7 +9,8 @@
 import ARKit
 import UIKit
 
-enum LifeBarState{
+// MARK: LifeBarState
+enum LifeBarState {
     case good
     case medium
     case bad
@@ -25,9 +26,11 @@ enum LifeBarState{
 
 class LifeBar: SCNNode {
     
+    // MARK: Variables
     private var state: LifeBarState = .good
     private var progress: Float = 100
     
+    // MARK: Constructor
     init(at position: SCNVector3) {
         super.init()
         
@@ -43,6 +46,7 @@ class LifeBar: SCNNode {
     
     required init?(coder aDecoder: NSCoder) { fatalError() }
     
+    // MARK: Public Functions
     func face(to objectOrientation: simd_float4x4) {
         var transform = objectOrientation
         transform.columns.3.x = self.position.x
@@ -68,6 +72,14 @@ class LifeBar: SCNNode {
         material.isDoubleSided = true
         lifeBox.materials = [material]
         self.geometry = lifeBox
+    }
+    
+    func pause() {
+        isPaused = true
+    }
+    
+    func resume() {
+        isPaused = false
     }
     
     func destroy() {

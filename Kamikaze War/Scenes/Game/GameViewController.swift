@@ -74,16 +74,22 @@ class GameViewController: UIViewController {
         viewModel.fire()
     }
     
+    private func pauseGame() {
+        viewModel.pauseGame()
+        sceneView.session.pause()
+    }
+    
+    private func resumeGame() {
+        viewModel.resumeGame()
+        sceneView.session.run(configuration)
+    }
+    
     private func exitGame() {
         viewModel.exitGame()
     }
     
-    private func resumeGame() {
-        sceneView.session.run(configuration)
-    }
-    
     private func gameOverAlert(score: Int) {
-        sceneView.session.pause()
+        pauseGame()
         
         let exitAction = UIAlertAction(title: "Accept", style: .default, handler: { [weak self] _ in
             self?.exitGame()
@@ -97,7 +103,7 @@ class GameViewController: UIViewController {
     
     // MARK: IBActions
     @IBAction private func tapExitButton(_ sender: Any) {
-        sceneView.session.pause()
+        pauseGame()
         
         let exitAction = UIAlertAction(title: "Exit", style: .destructive, handler: { [weak self] _ in
             self?.exitGame()
