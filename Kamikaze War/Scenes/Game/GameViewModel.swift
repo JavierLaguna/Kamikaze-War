@@ -108,6 +108,8 @@ class GameViewModel {
     }
     
     func changeSelectedBulletTo(_ bullet: Bullet) {
+        guard (bullet.infinite || bullet.count ?? 0 > 0) else { return }
+        
         bullets = bullets.map { item in
             item.isSelected = bullet.id == item.id
             NotificationCenter.default.post(name: item.notificationsId, object: item)
