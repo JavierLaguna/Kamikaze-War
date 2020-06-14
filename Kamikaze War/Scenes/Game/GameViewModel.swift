@@ -31,7 +31,6 @@ class GameViewModel {
     // MARK: Variables
     weak var coordinatorDelegate: GameCoordinatorDelegate?
     weak var viewDelegate: GameViewDelegate?
-    var score: Int = 0
     var planes: [Plane] = []
     var ammoBoxes: [AmmoBox] = []
     var cameraOrientation: simd_float4x4?
@@ -42,6 +41,13 @@ class GameViewModel {
     var ammoViewModels: [AmmoViewModel] {
         return bullets.map {
             return AmmoViewModel(bullet: $0)
+        }
+    }
+    var score: Int = 0 {
+        didSet {
+            if score != oldValue {
+                scoreUpdated(score)
+            }
         }
     }
     
@@ -71,12 +77,16 @@ class GameViewModel {
     }
     
     func planeBeaten(_ plane: Plane, node: SCNNode) {
-        // TODO ADD DAMAGE LOGIC
-        planes = planes.filter { $0.id != plane.id }
-        plane.destroy()
-        Sounds.explosion.play()
-        viewDelegate?.showExplosion(on: node)
-        addNewPlane(withId: plane.id)
+        let destroyed = plane.beaten(damage: selectedBullet.damage)
+        
+        if destroyed {
+            score = score + gameRules.pointsForPlaneDesctruction
+            planes = planes.filter { $0.id != plane.id }
+            plane.destroy()
+            Sounds.explosion.play()
+            viewDelegate?.showExplosion(on: node)
+            addNewPlane(withId: plane.id)
+        }
     }
     
     func ammoBoxBeaten(_ ammoBox: AmmoBox, node: SCNNode) {
@@ -152,6 +162,14 @@ class GameViewModel {
             }
             
             NotificationCenter.default.post(name: bullet.notificationsId, object: bullet)
+        }
+    }
+    
+    private func scoreUpdated(_ score: Int) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.viewDelegate?.updateScore(score: score)
         }
     }
         

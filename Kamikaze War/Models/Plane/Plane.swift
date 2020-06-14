@@ -11,7 +11,7 @@ import ARKit
 class Plane: SCNNode {
     
     var id: Int = 0
-    var life: Int = 100
+    var life: Float = 100
     var lifeBar: LifeBar
     var didReachTarget: ((_ plane: Plane) -> Void)?
     
@@ -69,6 +69,12 @@ class Plane: SCNNode {
         transform.columns.3.z = self.position.z
         self.transform = SCNMatrix4(transform)
         lifeBar.face(to: objectOrientation)
+    }
+    
+    func beaten(damage: Float) -> Bool {
+        life = life - damage
+        lifeBar.updateWith(life: life)
+        return life <= 0
     }
     
     func destroy() {

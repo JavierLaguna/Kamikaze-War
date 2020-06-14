@@ -170,16 +170,20 @@ extension GameViewController: SCNPhysicsContactDelegate {
             
             if let plane = contact.nodeA as? Plane {
                 viewModel.planeBeaten(plane, node: contact.nodeA)
+                contact.nodeB.removeFromParentNode()
             } else if let plane = contact.nodeB as? Plane {
                 viewModel.planeBeaten(plane, node: contact.nodeB)
+                contact.nodeA.removeFromParentNode()
             }
         } else if (categoryBitMaskA == ammoBoxBit && categoryBitMaskB == bulletBit) ||
             (categoryBitMaskA == bulletBit && categoryBitMaskB == ammoBoxBit) {
             
             if let ammoBox = contact.nodeA as? AmmoBox {
                 viewModel.ammoBoxBeaten(ammoBox, node: contact.nodeA)
+                contact.nodeB.removeFromParentNode()
             } else if let ammoBox = contact.nodeB as? AmmoBox {
                 viewModel.ammoBoxBeaten(ammoBox, node: contact.nodeB)
+                contact.nodeA.removeFromParentNode()
             }
         }
     }
